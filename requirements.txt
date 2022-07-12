@@ -1,0 +1,14 @@
+attrs==21.2.0
+azure-functions==1.7.2
+certifi==2021.5.30
+charset-normalizer==2.0.4
+graphviz==0.18
+idna==3.2
+jmespath==0.10.0
+jsonschema==4.1.2
+Pillow==8.4.0
+pyrsistent==0.18.0
+raven==6.10.0
+requests==2.26.0
+svg.path==4.1
+urllib3==1.26.6

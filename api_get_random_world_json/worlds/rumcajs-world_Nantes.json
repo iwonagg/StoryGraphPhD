@@ -1,0 +1,225 @@
+[
+    {
+        "Title": "World around Jiczyn for paper / Świat wokół Jiczyna do artykułu",
+        "TitleGeneric": "",
+        "Description": "Świat, w którym może wydarzyć się misja Rumcajsa.",
+        "Override": 0,
+        "LSide": {
+            "Locations": [
+                {
+                    "Id": "140557505853056",
+                    "Name": "Cave",
+                    "Characters": [
+                        {
+                            "Name": "Manka",
+                            "Attributes": {
+                                "HP": 100
+                            }
+                        }
+                    ],
+                    "Connections": [
+                        {
+                            "Destination": "140557505855168"
+                        }
+                    ]
+                },
+                {
+                    "Id": "140557505855232",
+                    "Name": "Jiczyn",
+                    "Characters": [
+                        {
+                            "Name": "Merchant",
+                            "Attributes": {
+                                "HP": 100,
+                                "Money": 10
+                            }
+                        },
+                        {
+                            "Name": "Jeweler",
+                            "Attributes": {
+                                "HP": 100,
+                                "Money": 10
+                            },
+                            "Items": [
+                                {
+                                    "Name": "Necklace",
+                                    "Attributes": {"Value": 1}
+                                }
+                            ]
+                        }
+                    ],
+                    "Connections": [
+                        {
+                            "Destination": "140557505868032"
+                        }
+                    ]
+                },
+                {
+                    "Id": "140557505852928",
+                    "Name": "Forest",
+                    "Items": [
+                        {
+                            "Name": "Brushwood",
+                            "Attributes": {
+                                "Value": 1
+                            }
+                        }
+                    ],
+                    "Connections": [
+                        {
+                            "Destination": "140557505854528"
+                        },
+                        {
+                            "Destination": "140557505853824"
+                        }
+                    ]
+                },
+                {
+                    "Id": "140557505854528",
+                    "Name": "Forest",
+                    "Connections": [
+                        {
+                            "Destination": "140557505852928"
+                        },
+                        {
+                            "Destination": "140557505867904"
+                        },
+                        {
+                            "Destination": "140557505855168"
+                        }
+                    ]
+                },
+                {
+                    "Id": "140557505867904",
+                    "Name": "Forest",
+                    "Items": [
+                        {
+                            "Name": "Brushwood",
+                            "Attributes": {
+                                "Value": 1
+                            }
+                        }
+                    ],
+                    "Connections": [
+                        {
+                            "Destination": "140557505854528"
+                        },
+                        {
+                            "Destination": "140557505852992"
+                        }
+                    ]
+                },
+                {
+                    "Id": "140557505853824",
+                    "Name": "Forest",
+                    "Connections": [
+                        {
+                            "Destination": "140557505852928"
+                        },
+                        {
+                            "Destination": "140557505855168"
+                        },
+                        {
+                            "Destination": "140557505868224"
+                        }
+                    ]
+                },
+                {
+                    "Id": "140557505855168",
+                    "Name": "Forest",
+                    "Characters": [
+                        {
+                            "Name": "Rumcajs",
+                            "Attributes": {
+                                "HP": 100,
+                                "Money": 0
+                            }
+                        }
+                    ],
+                    "Items": [
+                        {
+                            "Name": "Brushwood",
+                            "Attributes": {
+                                "Value": 1
+                            }
+                        }
+                    ],
+                    "Connections": [
+                        {
+                            "Destination": "140557505853056"
+                        },
+                        {
+                            "Destination": "140557505854528"
+                        },
+                        {
+                            "Destination": "140557505853824"
+                        },
+                        {
+                            "Destination": "140557505852992"
+                        },
+                        {
+                            "Destination": "140557505868032"
+                        }
+                    ]
+                },
+                {
+                    "Id": "140557505852992",
+                    "Name": "Forest",
+                    "Items": [
+                        {
+                            "Name": "Brushwood",
+                            "Attributes": {
+                                "Value": 1
+                            }
+                        }
+                    ],
+                    "Connections": [
+                        {
+                            "Destination": "140557505867904"
+                        },
+                        {
+                            "Destination": "140557505855168"
+                        }
+                    ]
+                },
+                {
+                    "Id": "140557505868224",
+                    "Name": "Forest",
+                    "Items": [
+                        {
+                            "Name": "Brushwood",
+                            "Attributes": {
+                                "Value": 1
+                            }
+                        }
+                    ],
+                    "Connections": [
+                        {
+                            "Destination": "140557505853824"
+                        },
+                        {
+                            "Destination": "140557505868032"
+                        }
+                    ]
+                },
+                {
+                    "Id": "140557505868032",
+                    "Name": "Forest",
+                    "Connections": [
+                        {
+                            "Destination": "140557505855168"
+                        },
+                        {
+                            "Destination": "140557505868224"
+                        },
+                        {
+                            "Destination": "140557505855232"
+                        }
+                    ]
+                }
+            ]
+        },
+        "RSide": {},
+        "Instructions": []
+    }
+]

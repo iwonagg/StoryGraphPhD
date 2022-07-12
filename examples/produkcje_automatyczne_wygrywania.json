@@ -1,0 +1,106 @@
+[
+  {
+    "Title": "DragonStory mission complited / Zakończenie sukcesem misji DragonStory",
+    "TitleGeneric": "",
+    "Description": "«Bohater» osiągnął cel misji.",
+    "Comment": "Główny bohater musi być pierwszą wymienioną postacią",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Lokacja_A",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Bohater",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": [
+                {
+                  "Name": "Dragon_egg"
+                }
+              ]
+            }
+          ],
+          "Items": []
+
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "winning"
+      }
+    ]
+  },
+  {
+      "Title": "RumcajsStory mission complited pl / Zakończenie sukcesem misji RumcajsStory pl",
+      "TitleGeneric": "",
+      "Description": "Rumcajs osiągnął cel misji.",
+      "Comment": "Główny bohater musi być pierwszą wymienioną postacią",
+      "Override": 0,
+      "LSide": {
+          "Locations": [
+              {
+                  "Name": "Jaskinia",
+                  "Characters": [
+                      {
+                          "Name": "Rumcajs"
+
+                      },
+                      {
+                          "Name": "Hanka",
+                          "Items": [
+                            {
+                                "Name": "Korale"
+                            }
+                        ]
+                      }
+                  ]
+              }
+          ]
+      },
+      "RSide": {},
+      "Instructions": [
+        {
+            "Op": "winning"
+        }
+      ]
+  },
+  {
+      "Title": "RumcajsStory mission complited en / Zakończenie sukcesem misji RumcajsStory en",
+      "TitleGeneric": "",
+      "Description": "Rumcajs osiągnął cel misji.",
+      "Comment": "Główny bohater musi być pierwszą wymienioną postacią",
+      "Override": 0,
+      "LSide": {
+          "Locations": [
+              {
+                  "Name": "Cave",
+                  "Characters": [
+                      {
+                          "Name": "Rumcajs"
+
+                      },
+                      {
+                          "Name": "Manka",
+                          "Items": [
+                            {
+                                "Name": "Necklace"
+                            }
+                        ]
+                      }
+                  ]
+              }
+          ]
+      },
+      "RSide": {},
+      "Instructions": [
+        {
+            "Op": "winning"
+        }
+      ]
+  }
+]

@@ -1,0 +1,204 @@
+[
+	{
+		"Title": "Picking up brushwood / Podnoszenie chrustu",
+		"TitleGeneric": "Picking item up / Podniesienie przedmiotu",
+		"Description": "Rumcajs zbiera chrust.",
+		"Override": 0,
+		"LSide": {
+			"Locations": [
+				{
+					"Name": "Forest",
+					"Characters": [
+						{
+							"Name": "Rumcajs",
+							"IsObject": true
+						}
+					],
+					"Items": [
+						{
+							"Name": "Brushwood"
+						}
+					]
+				}
+			]
+		},
+		"RSide": {},
+		"Instructions": [
+			{
+				"Op": "move",
+				"Nodes": "Brushwood",
+				"To": "Rumcajs/Items"
+			}
+		]
+	},
+	{
+		"Title": "Selling the brushwood to Merchant / Sprzedaż chrustu handlarzowi",
+		"TitleGeneric": "",
+		"Comment": "Podejście drastycznie różne od transakcji kupna-sprzedaży",
+		"Description": "Rumcajs sprzedaje chrust handlarzowi.",
+		"Override": 0,
+		"LSide": {
+			"Locations": [
+				{
+					"Name": "Jiczyn",
+					"Characters": [
+						{
+							"Name": "Rumcajs",
+							"IsObject": true,
+							"Items": [
+								{
+									"Name": "Brushwood"
+								}
+							]
+						},
+						{
+							"Name": "Merchant"
+						}
+					]
+				}
+			]
+		},
+		"RSide": {},
+		"Instructions": [
+			{
+				"Op": "delete",
+				"Nodes": "Brushwood"
+			},
+			{
+				"Op": "create",
+				"In": "Rumcajs/Items",
+				"Sheaf": {
+					"Name": "Coin"
+				}
+			}
+		]
+	},
+	{
+		"Title": "Buying the necklace made by jeweler / Kupno korali stworzonych przez jubilera",
+		"TitleGeneric": "",
+		"Comment": "Podejście drastycznie różne od transakcji kupna-sprzedaży",
+		"Description": "Jubiler tworzy korale i przekazuje je Rumcajsowi, który poświęca na nie miedziaki.",
+		"Override": 0,
+		"LSide": {
+			"Locations": [
+				{
+					"Name": "Jiczyn",
+					"Characters": [
+						{
+							"Name": "Rumcajs",
+							"IsObject": true,
+							"Items": [
+								{
+									"Id": "I1",
+									"Name": "Coin"
+								},
+								{
+									"Id": "I2",
+									"Name": "Coin"
+								},
+								{
+									"Id": "I3",
+									"Name": "Coin"
+								}
+							]
+						},
+						{
+							"Name": "Jeweler"
+						}
+					]
+				}
+			]
+		},
+		"RSide": {},
+		"Instructions": [
+			{
+				"Op": "delete",
+				"Nodes": "I1"
+			},
+			{
+				"Op": "delete",
+				"Nodes": "I2"
+			},
+			{
+				"Op": "delete",
+				"Nodes": "I3"
+			},
+			{
+				"Op": "create",
+				"In": "Rumcajs/Items",
+				"Sheaf": {
+					"Name": "Necklace"
+				}
+			}
+		]
+	},
+	{
+		"Title": "Giving the necklace to Manka / Ofiarowanie Hance korali",
+		"TitleGeneric": "Item acquisition from another character / Przejęcie przedmiotu od innej postaci",
+		"Description": "Rumcajs ofiarowuje korale ukochanej.",
+		"Override": 0,
+		"LSide": {
+			"Locations": [
+				{
+					"Name": "Cave",
+					"Characters": [
+						{
+							"Name": "Rumcajs",
+							"IsObject": true,
+							"Items": [
+								{
+									"Name": "Necklace"
+								}
+							]
+						},
+						{
+							"Name": "Manka"
+						}
+					]
+				}
+			]
+		},
+		"RSide": {},
+		"Instructions": [
+			{
+				"Op": "move",
+				"Nodes": "Necklace",
+				"To": "Manka/Items"
+			}
+		]
+	},
+	{
+		"Title": "Rumcajs location change / Zmiana lokacji przez Rumcajsa",
+		"TitleGeneric": "Location change / Zmiana lokacji",
+		"Description": "Rumcajs przechodzi z lokacji «Anywhere» do lokacji «Loc2».",
+		"Override": 0,
+		"LSide": {
+			"Locations": [
+				{ "Id": "Anywhere",
+					"Connections": [
+						{
+							"Destination": "Loc2"
+						}
+					],
+					"Characters": [
+						{
+							"Name": "Rumcajs",
+							"IsObject": true
+						}
+					]
+				},
+				{
+					"Id": "Loc2"
+				}
+			]
+		},
+		"RSide": {},
+		"Instructions": [
+			{
+				"Op": "move",
+				"Nodes": "Rumcajs",
+				"To": "Loc2/Characters"
+			}
+		]
+	}
+]

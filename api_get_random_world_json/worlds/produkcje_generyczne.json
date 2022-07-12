@@ -1,0 +1,1360 @@
+[
+  {
+    "Title": "Teleportation / Teleportacja",
+    "TitleGeneric": "",
+    "Description": "«Bohater» przechodzi do innej lokacji («Lokacja_B»), nawet jeśli nie jest połączona z bieżącą lokacją («Lokacja_A»).",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Lokacja_A",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Bohater",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": []
+        },
+        {
+          "Id": "Lokacja_B",
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Bohater",
+        "To": "Lokacja_B/Characters"
+      }
+    ]
+  },
+  {
+    "Title": "Location change / Zmiana lokacji",
+    "TitleGeneric": "Teleportation / Teleportacja",
+    "Description": "«Bohater» przechodzi do sąsiedniej lokacji («Lokacja_B»).",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Lokacja_A",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Bohater",
+              "IsObject": true,
+              "Attributes": {
+              },
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": [],
+          "Connections": [
+            {
+              "Destination": "Lokacja_B"
+            }
+          ]
+        },
+        {
+          "Id": "Lokacja_B"
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Bohater",
+        "To": "Lokacja_B/Characters"
+      }
+    ]
+  },
+  {
+    "Title": "Fight ending with character’s escape / Walka zakończona ucieczką uczestnika",
+    "TitleGeneric": "Location change / Zmiana lokacji",
+    "Description": "Jeden bohater («BohaterA») atakuje drugiego («BohaterB»), który ucieka do sąsiedniej lokacji («LokacjaB»), gubiąc wszystkie swoje przedmioty w panicznej ucieczce.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "LokacjaA",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "BohaterA",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            },
+            {
+              "Id": "BohaterB",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": [],
+          "Connections": [
+            {
+              "Destination": "LokacjaB"
+            }
+          ]
+        },
+        {
+          "Id": "LokacjaB",
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "BohaterB/Items/*",
+        "To": "LokacjaA/Items"
+      },
+      {
+        "Op": "move",
+        "Nodes": "BohaterB",
+        "To": "LokacjaB/Characters"
+      }
+    ]
+  },
+  {
+    "Title": "Character’s arrest / Aresztowanie bohatera",
+    "TitleGeneric": "Teleportation / Teleportacja",
+    "Description": "«Wanted_person», który jest ścigany listem gończym, zostaje wysłany do więzienia przez przedstawiciela władzy («Authority»). A było żyć uczciwie…",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "LokacjaA",
+          "Attributes": {},
+          "Characters": 
+          [
+              {
+                "Id": "Authority",
+                "IsObject": true,
+                "Attributes": {
+                  "IsAuthority": true
+                },
+                "Comment": "Niech to będzie: Lawyer, Merchant respected, Prison governor, Prison guard, Ship captain. Uwaga. Jeśli Ship captain, to wymusi legalizm całej gry",
+                "Characters": [],
+                "Items": []
+              },
+              {
+                  "Id": "Wanted_person",
+                  "Attributes": {
+                    "IsWanted": true
+                  },
+                  "Characters": [],
+                  "Items": []
+                }
+            ],
+          "Items": []
+        },
+        {
+          "Name": "Prison",
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Wanted_person/Items/*",
+        "To": "Authority/Items"
+      },
+      {
+        "Op": "move",
+        "Nodes": "Wanted_person",
+        "To": "Prison/Characters"
+      },
+      {
+        "Op": "unset",
+        "Attribute": "Wanted_person.IsWanted"
+      }
+    ]
+  },
+  {
+    "Title": "Picking item up / Podniesienie przedmiotu",
+    "TitleGeneric": "",
+    "Description": "«Bohater» podnosi przedmiot («Something») leżący w lokacji.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "LokacjaA",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Bohater",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": [
+            {
+              "Id": "Something",
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            }
+          ]
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Something",
+        "To": "Bohater/Items"
+      }
+    ]
+  },
+  {
+    "Title": "Stealing an item from location / Kradzież przedmiotu z lokacji",
+    "TitleGeneric": "Picking item up / Podniesienie przedmiotu",
+    "Description": "«Any_character» dokonuje kradzieży przedmiotu («Any_item») z przestrzeni prywatnej («Somewhere»). Powoduje to wystawienie za nim listu gończego. Czy było warto?",
+    "Comment": "Nieobecność właściciela, lokacja prywatna",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {
+            "IsPrivate": true
+          },
+          "Characters": [
+            {
+              "Id": "Any_character",
+              "IsObject": true,
+              "Attributes": {},
+              "Items": []
+            }
+          ],
+          "Items": [
+            {
+              "Id": "Any_item"
+            }
+          ],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [
+      {
+        "Count": "Somewhere/Characters/*",
+        "Max": 1
+      }
+    ],
+    "Instructions": [
+      {
+        "Op": "set",
+        "Attribute": "Any_character.IsWanted",
+        "Value": true
+      },
+      {
+        "Op": "move",
+        "Nodes": "Any_item",
+        "To": "Any_character/Items"
+      }
+    ]
+  },
+  {
+    "Title": "Dropping item / Odłożenie przedmiotu",
+    "TitleGeneric": "",
+    "Description": "«Bohater» odkłada przedmiot («Something») do lokacji.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "LokacjaA",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Bohater",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": [
+                {
+                  "Id": "Something",
+                  "Attributes": {},
+                  "Characters": [],
+                  "Items": []
+                }
+              ]
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Something",
+        "To": "LokacjaA/Items"
+      }
+    ]
+  },
+  {
+    "Title": "Putting item in / Włożenie przedmiotu",
+    "TitleGeneric": "",
+    "Description": "«Bohater» wkłada przedmiot («Something») do innego przedmiotu («Opakowanie»).",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "LokacjaA",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Bohater",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": [
+                {
+                  "Id": "Something",
+                  "Attributes": {},
+                  "Characters": [],
+                  "Items": []
+                }
+              ]
+            }
+          ],
+          "Items": [
+            {
+              "Id": "Opakowanie",
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            }
+          ]
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Something",
+        "To": "Opakowanie/Items"
+      }
+    ]
+  },
+  {
+    "Title": "Pulling item out / Wyciągnięcie przedmiotu",
+    "TitleGeneric": "",
+    "Description": "«Bohater» wyciąga przedmiot («Something») z innego przedmiotu («Opakowanie»).",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "LokacjaA",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Bohater",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": [
+            {
+              "Id": "Opakowanie",
+              "Attributes": {},
+              "Characters": [],
+              "Items": [
+                {
+                  "Id": "Something",
+                  "Attributes": {},
+                  "Characters": [],
+                  "Items": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Something",
+        "To": "Bohater/Items"
+      }
+    ]
+  },
+  {
+    "Title": "Overwhelming character / Przejęcie kontroli nad postacią",
+    "TitleGeneric": "",
+    "Description": "Stworzenie grupy z dwóch bohaterów: «Any1» przejmuje kontrolę nad inną postacią («Any2»).",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Anywhere",
+          "Characters": [
+            {
+              "Id": "Any1",
+              "IsObject": true
+            },
+            {
+              "Id": "Any2"
+            }
+          ]
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Any2",
+        "To": "Any1/Characters"
+      }
+    ]
+  },
+  {
+    "Title": "Deleting the group / Rozgrupowanie bohaterów",
+    "TitleGeneric": "",
+    "Description": "Rozwiązywanie grupy bohaterów podległych postaci «Group».",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Anywhere",
+          "Characters": [
+            {
+              "Id": "Group",
+              "IsObject": true
+            }
+          ]
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Group/Characters/*",
+        "To": "Anywhere/Characters"
+      }
+    ]
+  },
+  {
+    "Title": "Item acquisition from another character / Przejęcie przedmiotu od innej postaci",
+    "TitleGeneric": "",
+    "Description": "«BohaterB» oddaje drugiemu bohaterowi («BohaterA») przedmiot («Something»).",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        { 
+          "Id": "Somehere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "BohaterA",
+              "IsObject": true,
+              "Attributes": {}
+            },
+            {
+              "Id": "BohaterB",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": [
+                {
+                  "Id": "Something",
+                  "Attributes": {}
+                }
+              ]
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [],
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Something",
+        "To": "BohaterA/Items"
+      }
+    ]
+  },
+  {
+    "Title": "Exchanging item for item / Wymiana przedmiotu na przedmiot",
+    "TitleGeneric": "Item acquisition from another character / Przejęcie przedmiotu od innej postaci",
+    "Description": "«BohaterA», który posiada pewien przedmiot («SomethingA»), i «BohaterB», który posiada inny przedmiot («Something_elseB»), wymieniają się tymi przedmiotami.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "BohaterA",
+              "IsObject": true,
+              "Attributes": {},
+              "Items": [
+                {
+                  "Id": "SomethingA",
+                  "Attributes": {}
+                }
+              ]
+            },
+            {
+              "Id": "BohaterB",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": [
+                {
+                  "Id": "Something_elseB",
+                  "Attributes": {}
+                }
+              ]
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [],
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "SomethingA",
+        "To": "BohaterB/Items"
+      },
+      {
+        "Op": "move",
+        "Nodes": "Something_elseB",
+        "To": "BohaterA/Items"
+      }
+    ]
+  },
+  {
+    "Title": "Making a deal / Transakcja kupna-sprzedaży",
+    "TitleGeneric": "Item acquisition from another character / Przejęcie przedmiotu od innej postaci",
+    "Description": "«Seller» sprzedaje kupującemu («Buyer») przedmiot («Something»).",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Buyer",
+              "IsObject": true,
+              "Attributes": {
+                "Money": null
+              }
+            },
+            {
+              "Id": "Seller",
+              "IsObject": true,
+              "Attributes": {
+                "Money": null
+              },
+              "Characters": [],
+              "Items": [
+                {
+                  "Id": "Something",
+                  "Attributes": {
+                    "Value": null
+                  }
+                }
+              ]
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [
+      {
+        "Cond": "Buyer.Money >= Something.Value"
+      }
+    ],
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Something",
+        "To": "Buyer/Items"
+      },
+      {
+        "Op": "set",
+        "Attribute": "Buyer.Money",
+        "Expr": "Buyer.Money - Something.Value"
+      },
+      {
+        "Op": "set",
+        "Attribute": "Seller.Money",
+        "Expr": "Seller.Money + Something.Value"
+      }
+    ]
+  },
+  {
+    "Title": "Character’s feature change / Zmiana własności postaci",
+    "TitleGeneric": "",
+    "Description": "«Bohater» zmienia się.",
+    "Comment": "Problem tworzenia obiektów (tu: atrybut) w produkcji generycznej. Użyto „?”.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Bohater",
+              "Attributes": {},
+              "IsObject": true,
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [],
+    "Instructions": [
+      {
+        "Op": "set",
+        "Attribute": "Bohater.?",
+        "Value": "?"
+      }
+    ]
+  },
+  {
+    "Title": "Item’s feature change / Zmiana własności przedmiotu",
+    "TitleGeneric": "",
+    "Description": "«Something» jest zmieniane przez postać («Bohater»).",
+    "Comment": "Problem tworzenia obiektów (tu: atrybut) w produkcji generycznej. Użyto „?”.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Bohater",
+              "Attributes": {},
+              "IsObject": true,
+              "Characters": [],
+              "Items": [],
+              "Comment": "Wcześniej było bez postaci, sprawdzic, czy nie zepsuło czegoś"
+            }
+          ],
+          "Items": [
+            {
+              "Id": "Something",
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [],
+    "Instructions": [
+      {
+        "Op": "set",
+        "Attribute": "Something.?",
+        "Value": "?"
+      }
+    ]
+  },
+  {
+    "Title": "Turning an item into a character’s attribute / Przekształcenie przedmiotu w atrybut bohatera",
+    "TitleGeneric": "Character’s feature change / Zmiana własności postaci",
+    "Description": "«Bohater» traci przedmiot «Something», ale zyskuje atrybut.",
+    "Comment": "Problem tworzenia obiektów (tu: atrybut) w produkcji generycznej. Użyto „?”.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "LokacjaA",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Bohater",
+              "Attributes": {},
+              "IsObject": true,
+              "Characters": [],
+              "Items": [
+                {
+                  "Id": "Something",
+                  "Attributes": {},
+                  "Characters": [],
+                  "Items": []
+                }
+              ]
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "set",
+        "Attribute": "Bohater.?",
+        "Value": "?"
+      },
+      {
+        "Op": "delete",
+        "Nodes": "Something"
+      }
+    ]
+  },
+  {
+    "Title": "Turning a character’s attribute into an item / Przekształcenie atrybutu bohatera w przedmiot",
+    "TitleGeneric": "",
+    "Description": "«Hero» traci atrybut, ale zyskuje przedmiot.",
+    "Comment": "Problem tworzenia obiektów (tu: atrybut) w produkcji generycznej. Użyto „?”.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Anywhere",
+          "Characters": [
+            {
+              "Id": "Hero",
+              "IsObject": true,
+              "Items": [],
+              "Attributes": {
+                "?": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "create",
+        "Sheaf": {
+          "Name": "?"
+        },
+        "In": "Hero/Items"
+      },
+      {
+        "Op": "unset",
+        "Attribute": "Hero.?"
+      }
+    ]
+  },
+  {
+    "Title": "Character’s death / Śmierć bohatera",
+    "TitleGeneric": "Character’s feature change / Zmiana własności postaci",
+    "Description": "«Hero» umiera.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Hero",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [],
+    "Instructions": [
+      {
+        "Op": "set",
+        "Attribute": "Hero.IsDead",
+        "Value": true
+      },
+      {
+        "Op": "move",
+        "Nodes": "Hero/Items/*",
+        "To": "Somewhere/Items"
+      }
+    ]
+  },
+  {
+    "Title": "Fight ending with character’s death / Walka zakończona śmiercią uczestnika",
+    "TitleGeneric": "Character’s death / Śmierć bohatera",
+    "Description": "«CharacterA» i «CharacterB» podejmują walkę, w której «CharacterB» ginie.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "CharacterA",
+              "IsObject": true,
+              "Attributes": {
+                "HP": null
+              },
+              "Items": []
+            },
+            {
+              "Id": "CharacterB",
+              "IsObject": true,
+              "Attributes": {
+                "HP": null
+              },
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [
+      {
+        "Cond": "CharacterA.HP >= CharacterB.HP"
+      }
+
+    ],
+    "Instructions": [
+      {
+        "Op": "set",
+        "Attribute": "CharacterB.IsDead",
+        "Value": true
+      },
+      {
+        "Op": "set",
+        "Attribute": "CharacterA.HP",
+        "Expr": "CharacterA.HP - CharacterB.HP / 2"
+      },
+      {
+        "Op": "move",
+        "Nodes": "CharacterB/Items/*",
+        "To": "Somewhere/Items"
+      }
+    ]
+  },
+  {
+    "Title": "Knowledge creation / Utworzenie wiedzy fabularnej",
+    "TitleGeneric": "",
+    "Description": "«Hero» pozyskuje wiedzę fabularną. Atrybut „Knowledge” jest widoczny jako wpis w dzienniczku postaci.",
+    "Comment": "Problem tworzenia obiektów (tu: węzeł) w produkcji generycznej. Użyto „?”.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Hero",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [],
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Hero/Narration",
+        "Sheaf": {
+          "Name": "?",
+          "Attributes": {
+            "Knowledge": "?"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Title": "Knowledge creation in item / Utworzenie wiedzy fabularnej związanej z przedmiotem",
+    "TitleGeneric": "",
+    "Description": "«Something» zyskuje wiedzę fabularną.",
+    "Comment": "Problem tworzenia obiektów (tu: węzeł) w produkcji generycznej. Użyto „?”.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Something",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [],
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Something/Narration",
+        "Sheaf": {
+          "Name": "?",
+          "Attributes": {
+            "Knowledge": "?"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Title": "Character creation / Utworzenie postaci",
+    "TitleGeneric": "",
+    "Description": "Postać ? powstaje w lokacji «Somewhere».",
+    "Comment": "Problem tworzenia obiektów (tu: węzeł) w produkcji generycznej. Użyto „?”.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [],
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Somewhere/Characters",
+        "Sheaf": {
+          "Name": "?"
+        }
+      }
+    ]
+  },
+  {
+    "Title": "Knowledge loss / Utrata wiedzy fabularnej",
+    "TitleGeneric": "",
+    "Description": "«Hero» traci wiedzę fabularną («Information»).",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Hero",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": [],
+              "Narration": [
+                {
+                  "Id": "Information",
+                  "Attributes": {
+                    "Knowledge": null
+                  }
+                }
+              ]
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [],
+    "Instructions": [
+      {
+        "Op": "delete",
+        "Nodes": "Information"
+      }
+    ]
+  },
+  {
+    "Title": "Getting knowledge from conversation / Rozmowa z przekazaniem informacji",
+    "TitleGeneric": "",
+    "Description": "«CharacterA» przekazuje podczas rozmowy bohaterowi («CharacterB») wiedzę («Some_Knowledge»).",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "CharacterA",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": [],
+              "Items": [],
+              "Narration": [
+                {
+                  "Id": "Some_Knowledge",
+                  "Attributes": {
+                    "Knowledge": null
+                  },
+                  "Characters": [],
+                  "Items": []
+                }
+              ]
+            },
+            {
+              "Id": "CharacterB",
+              "Attributes": {},
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [],
+    "Instructions": [
+      {
+        "Op": "copy",
+        "To": "CharacterB/Narration",
+        "Nodes": "Some_Knowledge"
+      }
+    ]
+  },
+  {
+    "Title": "Getting knowledge from item / Pozyskanie wiedzy z przedmiotu",
+    "TitleGeneric": "",
+    "Description": "«CharacterA» natyka się na przedmiot («Medium») zawierający informację («Some_Knowledge») i poznaje ją.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "CharacterA",
+              "IsObject": true,
+              "Attributes": {},
+              "Characters": []
+            }
+          ],
+          "Items": [
+            {
+              "Id": "Medium",
+              "Attributes": {},
+              "Characters": [],
+              "Items": [],
+              "Narration": [
+                {
+                  "Id": "Some_Knowledge",
+                  "Attributes": {
+                    "Knowledge": null
+                  },
+                  "Characters": [],
+                  "Items": []
+                }
+              ]
+            }
+          ],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [
+      
+    ],
+    "Comment": "Nie da się dodać zastrzeżenia o duplikatach bez odwołania do nazwy",
+    "Instructions": [
+      {
+        "Op": "copy",
+        "To": "CharacterA/Narration",
+        "Nodes": "Some_Knowledge"
+      }
+    ]
+  },
+  {
+    "Title": "Creating an item using knowledge / Stworzenie przedmiotu z wiedzy fabularnej",
+    "TitleGeneric": "",
+    "Description": "«AnyHero» tworzy przedmiot dzięki posiadanej wiedzy fabularnej («AnyQuest»).",
+    "Comment": "Problem tworzenia obiektów (tu: węzeł) w produkcji generycznej. Użyto „?”.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Everywhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "AnyHero",
+              "IsObject": true,
+              "Items": [],
+              "Narration": [
+                {
+                  "Id": "AnyQuest"
+                }
+              ]
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Everywhere/Items",
+        "Sheaf": {
+          "Name": "?"
+        }
+      },
+      {
+        "Op": "delete",
+        "Nodes": "AnyQuest"
+      }
+    ]
+  },
+  {
+    "Title": "Poisoning item / Zatrucie przedmiotu",
+    "TitleGeneric": "Item’s feature change / Zmiana własności przedmiotu",
+    "Comment": "Przekształcenie przedmiotu w atrybut innego przedmiotu",
+    "Description": "Użycie trucizny («Any_poison») do zamiany innego przedmiotu («Other_item») w truciznę.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "BohaterA",
+              "IsObject": true,
+              "Attributes": {},
+              "Items": [
+                {
+                  "Id": "Any_poison",
+                  "Attributes": {
+                    "IsPoison": true
+                  }
+                }
+              ]
+            }
+          ],
+          "Items": [
+            {
+              "Id": "Other_item"
+            }
+          ],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [],
+    "Instructions": [
+      {
+        "Op": "delete",
+        "Nodes": "Any_poison"
+      },
+      {
+        "Op": "set",
+        "Attribute": "Other_item.IsPoison",
+        "Value": true
+      }
+    ]
+  },
+  {
+    "Title": "Nutrition / Odżywianie",
+    "TitleGeneric": "Turning an item into a character’s attribute / Przekształcenie przedmiotu w atrybut bohatera",
+    "Description": "«Bohater_A» odżywia/leczy się poprzez spożycie przedmiotu mającego wartość odżywczą («Any_item»). Mniam.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Location1",
+          "Characters": [
+            {
+              "Id": "Bohater_A",
+              "IsObject": true,
+              "Attributes": {
+                "HP": null
+              },
+              "Items": [
+                {
+                  "Id": "Any_item",
+                  "Attributes": {
+                    "NutritionalValue": null
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "set",
+        "Attribute": "Bohater_A.HP",
+        "Expr": "Bohater_A.HP + Any_item.NutritionalValue"
+      },
+      {
+        "Op": "delete",
+        "Nodes": "Any_item"
+      }
+    ]
+  },
+  {
+    "Title": "Nutrition with poison / Spożycie trucizny",
+    "TitleGeneric": "Nutrition / Odżywianie",
+    "Description": "«Bohater_A» zatruwa się poprzez spożycie przedmiotu będącego trucizną («Any_item»). Ojjj…",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Location1",
+          "Characters": [
+            {
+              "Id": "Bohater_A",
+              "IsObject": true,
+              "Attributes": {
+                "HP": null
+              },
+              "Items": [
+                {
+                  "Id": "Any_item",
+                  "Attributes": {
+                    "NutritionalValue": null,
+                    "IsPoison": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "set",
+        "Attribute": "Bohater_A.HP",
+        "Expr": "Bohater_A.HP + Any_item.NutritionalValue"
+      },
+      {
+        "Op": "set",
+        "Attribute": "Bohater_A.HP",
+        "Value": 0
+      },
+      {
+        "Op": "set",
+        "Attribute": "Bohater_A.IsDead",
+        "Value": true
+      },
+      {
+        "Op": "delete",
+        "Nodes": "Any_item"
+      }
+    ]
+  },
+  {
+    "Title": "Making Maa / Zrobienie Meee",
+    "TitleGeneric": "Knowledge creation / Utworzenie wiedzy fabularnej",
+    "Description": "Owca robi „Meee...”.",
+    "Override": 0,
+    "LSide": {
+
+      "Locations": [
+        {
+          "Id": "Location1",
+          "Characters": [
+            {
+              "Name": "Sheep",
+              "IsObject": true
+            }
+          ]
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Sheep/Narration",
+        "Sheaf": {
+          "Name": "Maaa",
+          "Attributes": {
+            "Sound": "Maaa"
+          }
+        }
+      }
+    ]
+  }
+]

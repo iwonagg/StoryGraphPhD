@@ -1,0 +1,631 @@
+{'op': 'add', 'attribute': 'Pirate.Money', 'value': 50}
+{'op': 'add', 'attribute': 'Main_hero.Money', 'value': 50}
+{'op': 'add', 'attribute': 'Main_hero.Money', 'value': 100}
+{'op': 'add', 'attribute': 'Pirate.Money', 'value': 100}
+{'op': 'add', 'attribute': 'Main_hero.Money', 'value': 100}
+{'op': 'add', 'attribute': 'Pirate.Money', 'value': 100}
+{'op': 'add', 'attribute': 'Main_hero.Money', 'value': 100}
+{'op': 'add', 'attribute': 'Main_hero.Money', 'value': -5}
+{'op': 'add', 'attribute': 'Merchant_respected.Money', 'value': 5}
+{'op': 'add', 'attribute': 'Main_hero.Money', 'value': -2}
+{'op': 'add', 'attribute': 'Peasant.Money', 'value': 2}
+{'op': 'create', 'in': 'anywhere/Characters', 'sheaf': {'Name': 'Party'}}
+{'op': 'create', 'in': 'Hero/Narration', 'sheaf': {'Id': 'xx', 'Attributes': {'Knowledge': 'Coś, o czym chcemy poinformowac gracza.', 'Comment': 'Problem z zapisem instrukcji create w produkcjach generycznych.'}}}
+{'op': 'create', 'in': 'CharacterB/Narration', 'sheaf': {'Id': 'xx', 'Attributes': {'Knowledge': 'Some_knowledge.Knowledge'}}}
+{'op': 'create', 'in': 'Everywhere/Items', 'sheaf': {'Id': 'Something'}}
+{'op': 'create', 'in': 'Somewhere/Items', 'sheaf': {'Id': 'Something'}}
+{'op': 'create', 'in': 'Prison/Characters', 'sheaf': {'Name': 'Prisoner_transport', 'Characters': []}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Gratitude_to_bandits', 'Comment': 'Sprawdzić czy gratitude to atrybut czy węzeł narracji'}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Disguised_as_cooper', 'Attributes': {'Knowledge': 'Bednarz nie żyje. To znaczy, że mogę przebrac się za niego, by wejsc na statek.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Knowledge_about_safe_conduct_and_tribute', 'Attributes': {'Knowledge': 'Za odebranie haraczu od karczmarza Urzędnik oferuje glejt.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Hero_becomes_inn_employee', 'Attributes': {'Knowledge': 'Bohater zostaje zatrudniony przez karczmarza. Dodatkowe źródło dochodu.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Hero_successfully_cheats_at_cards', 'Attributes': {'Knowledge': 'Bohater używa sprytu / sztuczek podczas gry, będąc niezauważonym. Otrzymanie monet w zamian za wygraną grę.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Hero_successfully_cheats_at_cards', 'Attributes': {'Knowledge': 'Bohater używa sprytu / sztuczek podczas gry, będąc niezauważonym jednak i tak przegrywa. Wyrzucenie głównego bohatera z karczmy na drogę.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Deadly_bandit_attack'}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Innkeepers_gratitude', 'Attributes': {'Level': 5}}}
+{'op': 'create', 'in': 'Wizard/Narration', 'sheaf': {'Name': 'Poisoned_well_treatment', 'Attributes': {'Level': 3}}}
+{'op': 'create', 'in': 'Dragons_lair/Items', 'sheaf': {'Name': 'Dragon_tooth'}}
+{'op': 'create', 'in': 'Dragons_lair/Items', 'sheaf': {'Name': 'Dragon_scales'}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Innkeepers_gratitude', 'Attributes': {'Level': 5}}}
+{'op': 'create', 'in': 'Wizard/Narration', 'sheaf': {'Name': 'Poisoned_well_treatment', 'Attributes': {'Level': 3}}}
+{'op': 'create', 'in': 'Dragons_lair/Items', 'sheaf': {'Name': 'Dragons_tooth'}}
+{'op': 'create', 'in': 'Dragons_lair/Items', 'sheaf': {'Name': 'Dragons_scales'}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Innkeepers_gratitude', 'Attributes': {'Level': 5}}}
+{'op': 'create', 'in': 'Wizard/Narration', 'sheaf': {'Name': 'Poisoned_well_treatment', 'Attributes': {'Level': 3}}}
+{'op': 'create', 'in': 'Dragons_lair/Items', 'sheaf': {'Name': 'Dragon_tooth'}}
+{'op': 'create', 'in': 'Dragons_lair/Items', 'sheaf': {'Name': 'Dragon_scales'}}
+{'op': 'create', 'in': 'Shady_merchant/Narration', 'sheaf': {'Name': 'Signed_theft_agreement', 'Attributes': {'Knowledge': 'Hero signed an agreement to steal a horse from the Barn. Merchant tells him that he has to sneak past Bandits that set up a camp on the road outside of Barn if he wants to succeed.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Knowledge_about_distracting_bandits', 'Attributes': {'Knowledge': 'Hero finds that to distract bandits he has to unplug a barrel filled with wine.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Knowledge_from_letter', 'Attributes': {'Knowledge': "Lumberjack is a lover of prison governor's daughter."}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Lumberjacks_gratitude'}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Lumberjacks_hatred', 'Attributes': {'Knowledge': 'Lumberjack hates Main_hero.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Knowledge_about_killing_lumberjack', 'Attributes': {'Knowledge': 'I need to kill lumberjack to get reward from respected merchant. Evidence of killing lumberjack is his axe.'}}}
+{'op': 'create', 'in': 'Merchant_respected/Narration', 'sheaf': {'Name': 'Knowledge_about_death_of_lumberjack_and_prison_governors_daughter', 'Attributes': {'Knowledge': 'Main Hero killed lumberjack. He says that Daughter is alive.'}}}
+{'op': 'create', 'in': 'Character/Items', 'sheaf': {'Name': 'Axe'}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Look_into_the_barn_quest', 'Attributes': {'Knowledge': 'Bohater zastanawia się nad wejściem do stodoły.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Merchant_shady_town_hall_quest', 'Attributes': {'Knowledge': 'Kupiec potrzebuje kogoś do pomocy przy kradzieży listu z ratusza.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Pirate_quest_start_active', 'Attributes': {'Knowledge': 'Pirat potrzebuje kogoś do odnalezienia skarbu, możesz go przekonać za pomocą kompasu.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Pirate_quest_boat_sub_quest_active', 'Attributes': {'Knowledge': 'Pirat poprosił Cię o odnalezienie łodzi w jaskini.'}}}
+{'op': 'create', 'in': 'Pirate/Narration', 'sheaf': {'Name': 'Pirate_quest_treasure_sub_quest_active'}}
+{'op': 'create', 'in': 'Cave/Characters', 'sheaf': {'Name': 'Dragon'}}
+{'op': 'create', 'in': 'Cave/Items', 'sheaf': {'Name': 'Boat'}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Pirate_quest_treasure_sub_quest_active', 'Attributes': {'Knowledge': 'Wykopałem skarb. Co zrobić, aby pirat pozwolił mi wrócić ze skarbem do portu?'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Pirate_quest_treasure_sub_quest_active', 'Attributes': {'Knowledge': 'Pirat znalazł skarb. Co zrobić, żeby się ze mną podzielił?'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Pirate_quest_treasure_lost_parrot', 'Attributes': {'Knowledge': 'Jaka ładna papuga. Chyba już ją gdzieś widziałem. Warto ją złapać.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Dragon_egg_secret_quest', 'Attributes': {'Knowledge': 'Jeśli dodasz do baraniny trujące zioła, uda ci się przechytrzyć smoka i zdobyć jego skarb.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Innkeepers_gratitude', 'Attributes': {'Level': 5}}}
+{'op': 'create', 'in': 'Wizard/Narration', 'sheaf': {'Name': 'Poisoned_well_treatment', 'Attributes': {'Level': 3}}}
+{'op': 'create', 'in': 'Dragons_lair/Items', 'sheaf': {'Name': 'Dragon_tooth'}}
+{'op': 'create', 'in': 'Dragons_lair/Items', 'sheaf': {'Name': 'Dragon_scales'}}
+{'op': 'create', 'in': 'Main_hero/Items', 'sheaf': {'Name': 'Mutton_chop', 'Attributes': {'isPoisoned': True}}}
+{'op': 'create', 'in': 'Dragons_lair/Items', 'sheaf': {'Name': 'Dragon_tooth'}}
+{'op': 'create', 'in': 'Dragons_lair/Items', 'sheaf': {'Name': 'Dragon_scales'}}
+{'op': 'create', 'in': 'Ship/Characters', 'sheaf': {'Name': 'Pirates', 'Characters': [{'Name': 'Pirate'}, {'Name': 'Pirate'}, {'Name': 'Pirate'}, {'Name': 'Pirate'}, {'Name': 'Pirate'}]}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Ziutek_sacrifice'}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Ward_off_pirates', 'Attributes': {'Knowledge': 'Bohater pomyślnie odparł atak piratów.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Ward_off_pirates', 'Attributes': {'Knowledge': 'Bohater pomyślnie odparł atak piratów.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Ward_off_pirates', 'Attributes': {'Knowledge': 'Bohater pomyślnie odparł atak piratów.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Is_captain', 'Attributes': {'Knowledge': 'Bohater zostaje mianowany kapitanem złoczyńców.'}}}
+{'op': 'create', 'in': 'Ziutek/Narration', 'sheaf': {'Name': 'Unexpected_revenge', 'Attributes': {'Knowledge': "Ziutek, staring at the surrounding waves, realizes that the friend betrayed by the hero was a long unseen brother of his grandfather's wife. The betrayal of his family requires bloody revenge, but for the sake of friendship, he leaves the hero alive on a desert island."}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Steal_ship_quest', 'Attributes': {'Knowledge': 'We need take over the ship to sail across the sea.'}}}
+{'op': 'create', 'in': 'Ship_guard/Narration', 'sheaf': {'Name': 'Ship_crew_poisoned', 'Attributes': {'Knowledge': 'Captain and the crew are not felling well.'}}}
+{'op': 'create', 'in': 'Main_hero/Items', 'sheaf': {'Id': 'wolf_pelt', 'Name': 'Wolf_pelt'}}
+{'op': 'create', 'in': 'Main_hero/Items', 'sheaf': {'Id': 'sheeps_meat_01', 'Name': 'Mutton_chop'}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Bring_compass', 'Attributes': {'Knowledge': 'Jeżeli przyniosę synowi kupca kompas, ten odda mi dokumenty.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Talk_with_shepherd', 'Attributes': {'Knowledge': 'Shepherd may have a task for you. Talk with him. You can get to Shepherds hideout from Pasture.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Help_shepherd_task', 'Attributes': {'Knowledge': 'Help shepherd with pasturing his sheep.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Help_shepherd_task', 'Attributes': {'Knowledge': 'Help shepherd with pasturing his sheep.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Fatal_mistake_quest', 'Attributes': {'Knowledge': 'Hero is drunk and his vision is blurry.'}}}
+{'op': 'create', 'in': 'Main_hero/Items', 'sheaf': {'Name': 'Bag', 'Items': [{'Name': 'Mutton_chop', 'Id': 'Mutton_chop_01'}, {'Name': 'Mutton_chop', 'Id': 'Mutton_chop_02'}, {'Name': 'Mutton_chop', 'Id': 'Mutton_chop_03'}, {'Name': 'Mutton_chop', 'Id': 'Mutton_chop_04'}]}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Shepherd_hostility', 'Attributes': {'Level': 5, 'Knowledge': 'Coś tu trzeba wpisać.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Fatal_mistake_quest', 'Attributes': {'Knowledge': 'Hero decides to steal a sheep.'}}}
+{'op': 'create', 'in': 'Main_hero/Items', 'sheaf': {'Name': 'Bag', 'Characters': []}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Knowledge_about_Ziutek', 'Attributes': {'Knowledge': 'Bandits boss Ziutek is in prison. He will be executed in 4 days. If I will help him escape he might be grateful.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Knowledge_about_wanted_friend', 'Attributes': {'Knowledge': 'My friend is wanted for some reason. Maybe I can trade him for Ziutek.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Ziutek_gratitude', 'Attributes': {'Knowledge': 'Ziutek is my loyal friend now.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Lost_friend', 'Attributes': {'Knowledge': 'I have betrayed my friend to help Ziutek.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Ziutek_gratitude', 'Attributes': {'Knowledge': 'Ziutek is my loyal friend now.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Lawful_guard_Marian', 'Attributes': {'Knowledge': 'I had to pay a fine because I am stupid.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Bandits_relations', 'Attributes': {'Knowledge': 'Bandits are now ready to storm the prison with you in order to get their leader Ziutek out.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Bandits_relations', 'Attributes': {'Knowledge': "You aren't badass enough to make bandits part of your storm crew. You can try to gain more badassness or maybe try to bribe the prison guard."}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Ziutek_gratitude', 'Attributes': {'Knowledge': 'Ziutek is my loyal friend now.'}}}
+{'op': 'create', 'in': 'Anywhere', 'sheaf': {'Name': 'Bandits', 'Attributes': {'Badassness': 10}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Knowledge_about_debt'}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Debt_to_a_bandit'}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Is_friend_to_main_hero'}}
+{'op': 'create', 'in': 'Location/Items', 'sheaf': {'Name': 'Wolf_pelt'}, 'Comment': 'Uzgodnić sposób zapisu pozyskiwania skór zwierząt'}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Help_on_the_fields_quest', 'Attributes': {'Knowledge': 'Żeby zdobyć trochę pieniędzy, można zebrać rzepę dla chłopa, udając się na pobliskie pole, a później do chaty chłopa.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Makao_game', 'Attributes': {'Knowledge': 'Mogę rozwalić przeciwników w makao.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Peasant_lose_quest', 'Attributes': {'Knowledge': 'Mogę odkupić nóż za jedną monetę.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Traveler_lose_quest', 'Attributes': {'Knowledge': 'Mogę porozmawiać z podróżnikiem, powie mi coś ciekawego.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Innkeeper_assistant_lose_quest', 'Attributes': {'Knowledge': 'Pogadam z pomocnikiem karczmarza o skrytce.'}}}
+{'op': 'create', 'in': 'Main_hero/Narration', 'sheaf': {'Name': 'Traveler_lose_quest', 'Attributes': {'Knowledge': 'W jaskini trolla znajduje się skrytka, po ktorą warto się udać. Plotka głosi że na statku znajduje się skarb.', 'Comment': 'Skarb występuje w misji 14'}}}
+{'op': 'delete', 'node': 'Elixir', 'Comment': 'Alternatywne sposoby dezaktywacji atrybutu'}
+{'op': 'delete', 'node': 'AnyQuest'}
+{'op': 'delete', 'node': 'Target'}
+{'op': 'delete', 'node': 'Hero/Items/Something'}
+{'op': 'delete', 'node': 'Hero/Items/Something'}
+{'op': 'delete', 'node': 'BohaterA/Items/Poison'}
+{'op': 'delete', 'node': 'Wizard/Narration/Poisoned_well_treatment'}
+{'op': 'delete', 'node': 'Main_hero/Items/Elixir'}
+{'op': 'delete', 'node': 'BohaterA/Items/Poison'}
+{'op': 'delete', 'node': 'Wizard/Narration/Poisoned_well_treatment'}
+{'op': 'delete', 'node': 'Main_hero/Items/Elixir'}
+{'op': 'delete', 'node': 'BohaterA/Items/Poison'}
+{'op': 'delete', 'node': 'Wizard/Narration/Poisoned_well_treatment'}
+{'op': 'delete', 'node': 'Main_hero/Items/Elixir'}
+{'op': 'delete', 'node': 'Carrot'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Knowledge_about_distracting_bandits'}
+{'op': 'delete', 'node': 'Knowledge_from_letter'}
+{'op': 'delete', 'node': 'Knowledge_from_letter'}
+{'op': 'delete', 'node': 'Knowledge_from_letter', 'Comment': 'Nie da się usunąc wiedzy wszystkim bohaterom naraz.'}
+{'op': 'delete', 'nodes': 'Main_hero/Narration/Knowledge_about_killing_lumberjack'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Knowledge_about_killing_lumberjack'}
+{'op': 'delete', 'node': 'Sword'}
+{'op': 'delete', 'node': 'Main_hero/Items/Picklock'}
+{'op': 'delete', 'node': 'Main_hero/Items/Picklock'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Look_into_the_barn_quest'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Merchant_shady_town_hall_quest'}
+{'op': 'delete', 'node': 'Main_hero/Items/Picklock'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Merchant_shady_town_hall_quest'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Pirate_quest_start_active'}
+{'op': 'delete', 'node': 'Main_hero/Items/Treasure'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Pirate_quest_treasure_sub_quest_active'}
+{'op': 'delete', 'node': 'Pirate/Narration/Pirate_quest_treasure_sub_quest_active'}
+{'op': 'delete', 'node': 'Main_hero/Items/Treasure'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Pirate_quest_treasure_sub_quest_active'}
+{'op': 'delete', 'node': 'Pirate/Narration/Pirate_quest_treasure_sub_quest_active'}
+{'op': 'delete', 'node': 'Main_hero/Items/Treasure'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Pirate_quest_treasure_sub_quest_active'}
+{'op': 'delete', 'node': 'Pirate/Narration/Pirate_quest_treasure_sub_quest_active'}
+{'op': 'delete', 'node': 'Pirate/Items/Treasure'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Pirate_quest_treasure_sub_quest_active'}
+{'op': 'delete', 'node': 'Pirate/Narration/Pirate_quest_treasure_sub_quest_active'}
+{'op': 'delete', 'node': 'Pirate/Items/Treasure'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Pirate_quest_treasure_sub_quest_active'}
+{'op': 'delete', 'node': 'Pirate/Narration/Pirate_quest_treasure_sub_quest_active'}
+{'op': 'delete', 'node': 'Main_hero/Items/Treasure'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Pirate_quest_treasure_sub_quest_active'}
+{'op': 'delete', 'node': 'BohaterA/Items/poison'}
+{'op': 'delete', 'node': 'Wizard/Narration/Poisoned_well_treatment'}
+{'op': 'delete', 'node': 'Main_hero/Items/Elixir'}
+{'op': 'delete', 'node': 'Mutton_chop'}
+{'op': 'delete', 'node': 'Herbs'}
+{'op': 'delete', 'node': 'Mutton_chop'}
+{'op': 'delete', 'node': 'Mutton_chop'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Dragon_egg_secret_quest'}
+{'op': 'delete', 'node': 'Pirates'}
+{'op': 'delete', 'node': 'Pirates'}
+{'op': 'delete', 'node': 'Pirates'}
+{'op': 'delete', 'node': 'Steal_ship_quest'}
+{'op': 'delete', 'node': 'Steal_ship_quest'}
+{'op': 'delete', 'node': 'Main_hero/Items/Priceless_argentinian_cactus'}
+{'op': 'delete', 'node': 'Steal_ship_quest'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Bring_compass'}
+{'op': 'delete', 'in': 'Main_hero/Narration', 'node': 'Knowledge_about_Ziutek'}
+{'op': 'delete', 'in': 'Main_hero/Narration', 'node': 'Knowledge_about_wanted_friend'}
+{'op': 'delete', 'in': 'Main_hero/Narration', 'node': 'Knowledge_about_Ziutek'}
+{'op': 'delete', 'in': 'Main_hero/Narration', 'node': 'Knowledge_about_wanted_friend'}
+{'op': 'delete', 'in': 'Main_hero/Narration', 'node': 'Knowledge_about_Ziutek'}
+{'op': 'delete', 'in': 'Main_hero/Narration', 'node': 'Bandits_relations'}
+{'op': 'delete', 'in': 'Main_hero/Narration', 'node': 'Knowledge_about_wanted_friend'}
+{'op': 'delete', 'in': 'Main_hero/Narration', 'node': 'Bandits_relations', 'Comment': 'Sprawdzić, czy ta produkcja zostanie wyłapana przez automat jako sposób na pozbycie się bandytów.'}
+{'op': 'delete', 'node': 'Main_hero/Items/Alcohol'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Debt_to_a_bandit'}
+{'op': 'delete', 'node': 'Merchant/Narration/Has_mess_in_store'}
+{'op': 'delete', 'node': 'Main_hero/Narration/Help_on_the_fields_quest'}
+{'op': 'delete', 'in': 'Main_hero/Narration', 'node': 'Peasant_lose_quest'}
+{'op': 'delete', 'in': 'Main_hero/Narration', 'node': 'Innkeeper_assistant_lose_quest'}
+{'op': 'delete', 'in': 'Main_hero/Narration', 'node': 'Innkeeper_assistant_lose_quest'}
+{'op': 'delete', 'node': 'Chest/Items/Coin'}
+{'op': 'delete', 'node': 'Chest/Items/Coin'}
+{'op': 'delete', 'node': 'Main_hero/Items/Elixir'}
+{'Comment': 'czy można monety skasować hurtem?', 'op': 'delete', 'node': 'Chest/Items/Coin'}
+{'op': 'delete', 'node': 'Chest/Items/Coin'}
+{'op': 'delete', 'node': 'Chest/Items/Coin'}
+{'op': 'delete', 'node': 'Chest/Items/Coin'}
+{'op': 'delete', 'node': 'Chest/Items/Coin'}
+{'op': 'move', 'node': 'Bohater', 'to': 'LokacjaB/Characters'}
+{'op': 'move', 'node': 'BohaterB/Items/*', 'to': 'LokacjaA/Items'}
+{'op': 'move', 'node': 'BohaterB', 'to': 'LokacjaB/Characters'}
+{'op': 'move', 'node': 'Bohater', 'to': 'Prison/Characters'}
+{'op': 'move', 'node': 'Something', 'to': 'Bohater/Items'}
+{'op': 'move', 'node': 'Any_item', 'to': 'Any_character/Items'}
+{'op': 'move', 'node': 'Something', 'to': 'LokacjaA/Items'}
+{'op': 'move', 'node': 'Something', 'to': 'Anywhere/Items'}
+{'op': 'move', 'node': 'Something', 'to': 'Opakowanie/Items'}
+{'op': 'move', 'node': 'Something', 'to': 'Bohater/Items'}
+{'op': 'move', 'node': 'anywhere/Characters/any1', 'to': 'Party/Characters'}
+{'op': 'move', 'node': 'anywhere/Characters/any2', 'to': 'Party/Characters'}
+{'op': 'move', 'node': 'Something', 'to': 'BohaterA/Items'}
+{'op': 'move', 'node': 'Something', 'to': 'BohaterA/Items'}
+{'op': 'move', 'node': 'Something_else', 'to': 'BohaterB/Items'}
+{'op': 'move', 'node': 'Something', 'to': 'Buyer/Items'}
+{'op': 'move', 'node': 'Something', 'to': 'LokacjaA/Items'}
+{'op': 'move', 'node': 'Hero/Items/*', 'to': 'Somewhere/Items'}
+{'op': 'move', 'node': 'CharacterB/Items/*', 'to': 'Somewhere/Items'}
+{'op': 'move', 'node': 'Hero/Items/*', 'to': 'Somewhere/Items'}
+{'op': 'move', 'node': 'Any_item', 'to': 'Hero/Items'}
+{'op': 'move', 'node': 'Hero', 'to': 'Kidnapper/Characters'}
+{'op': 'move', 'nodes': 'Prison/Characters/*', 'to': 'Prisoner_transport/Characters'}
+{'op': 'move', 'node': 'Prisoner_transport', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Prison_guard/Items/*', 'to': 'Road/Items'}
+{'op': 'move', 'nodes': 'Prisoner_transport/Characters/*', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Road/Bandits', 'to': 'Main_hero/Characters'}
+{'op': 'move', 'node': 'Ship_guard/Items/*', 'to': 'Port/Items'}
+{'op': 'move', 'node': 'Ship_captain/Items/*', 'to': 'Ship/Items'}
+{'op': 'move', 'node': 'Ship_captain', 'to': 'Port/Characters'}
+{'op': 'move', 'node': 'Main_Hero', 'to': 'Ship/Characters'}
+{'op': 'move', 'node': 'Road/Characters/Bandits', 'to': 'Prison/Characters'}
+{'op': 'move', 'node': 'Prison_guard/Items/*', 'to': 'Prison/Items'}
+{'op': 'move', 'node': 'Bandits', 'to': 'Main_hero/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Weapon', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Cooper/Items/*', 'to': 'Port/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Ship/Characters'}
+{'op': 'move', 'node': 'Main_hero/Items/*', 'to': 'Port/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Ship/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Town_hall/Characters'}
+{'op': 'move', 'node': 'Safe_conduct', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Safe_conduct', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Town_hall/Characters'}
+{'op': 'move', 'node': 'Drunkard/Items/*', 'to': 'Inn/Items'}
+{'op': 'move', 'node': 'Drunkard', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Poison', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Pasture/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Village/Characters'}
+{'op': 'move', 'node': 'Wizard', 'to': 'Village/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Pasture/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Forest/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Wizards_hut/Characters'}
+{'op': 'move', 'node': 'Elixir', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Forest/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Dragons_lair/Characters'}
+{'op': 'move', 'node': 'Dragons_lair/Dragon_tooth', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Dragons_lair/Dragon_scales', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Drunkard/Items/*', 'to': 'Inn/Items'}
+{'op': 'move', 'node': 'Drunkard', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Poison', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Pasture/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Village/Characters'}
+{'op': 'move', 'node': 'Wizard', 'to': 'Village/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Pasture/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Forest/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Wizards_hut/Characters'}
+{'op': 'move', 'node': 'Elixir', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Forest/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Dragons_lair/Characters'}
+{'op': 'move', 'node': 'Dragons_lair/Dragons_tooth', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Dragons_lair/Dragons_scales', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Drunkard/Items/*', 'to': 'Inn/Items'}
+{'op': 'move', 'node': 'Drunkard', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Poison', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Pasture/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Village/Characters'}
+{'op': 'move', 'node': 'Wizard', 'to': 'Village/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Pasture/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Forest/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Wizards_hut/Characters'}
+{'op': 'move', 'node': 'Elixir', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Forest/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Dragons_lair/Characters'}
+{'op': 'move', 'node': 'Dragons_lair/Dragon_tooth', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Dragons_lair/Dragon_scales', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Characters/Main_hero', 'to': 'Barn/Characters'}
+{'op': 'move', 'node': 'Chest/Items/Carrot', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Casket', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Horse', 'to': 'Main_hero/Characters'}
+{'op': 'move', 'node': 'Casket', 'to': 'Merchant_shady/Items'}
+{'op': 'move', 'node': 'Documents', 'to': 'Lumberjack/Items'}
+{'op': 'move', 'node': 'Sword', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Documents', 'to': 'Lumberjack/Items'}
+{'op': 'move', 'node': 'Lumberjack', 'to': 'Port/Characters'}
+{'op': 'move', 'node': 'Documents', 'to': 'Merchant_respected/Items'}
+{'op': 'move', 'node': 'Lumberjack/Items/*', 'to': 'Somewhere/Items'}
+{'op': 'move', 'node': 'Lumberjack/Items/*', 'to': 'Somewhere/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Bandit', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Town_hall/Characters'}
+{'op': 'move', 'node': 'Bandit', 'to': 'Town_hall/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Forest/Characters', 'Comment': 'Sprawdzić czy bandyta powinien zostać w lokacji Road'}
+{'op': 'move', 'node': 'Bandit', 'to': 'Forest/Characters', 'Comment': 'Sprawdzić czy bandyta powinien zostać w lokacji Road'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Town_hall/Characters'}
+{'op': 'move', 'node': 'Bandit', 'to': 'Town_hall/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Bandit', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Forest/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Forest/Characters'}
+{'op': 'move', 'node': 'Bandit', 'to': 'Forest/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Town_hall/Characters'}
+{'op': 'move', 'node': 'Bandit', 'to': 'Town_hall/Characters'}
+{'op': 'move', 'node': 'Town_hall/Items/pouch_01', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Forest/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Barn/Characters'}
+{'op': 'move', 'node': 'Elixir', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Picklock', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Ladder', 'to': 'Road/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Town_hall/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Prison/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Documents', 'to': 'Merchant_shady/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Island/Characters'}
+{'op': 'move', 'node': 'Pirate', 'to': 'Island/Characters'}
+{'op': 'move', 'node': 'Treasure', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Treasure', 'to': 'Pirate/Items'}
+{'op': 'move', 'node': 'Parrot', 'to': 'Island/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Port/Characters'}
+{'op': 'move', 'node': 'Parrot', 'to': 'Pirate/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Port/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Port/Characters'}
+{'op': 'move', 'node': 'Parrot', 'to': 'Pirate/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Port/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Port/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Port/Characters'}
+{'op': 'move', 'node': 'Drunkard/Items/*', 'to': 'Inn/Items'}
+{'op': 'move', 'node': 'Drunkard', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Poison', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Wizard', 'to': 'Village/Characters'}
+{'op': 'move', 'node': 'Elixir', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Dragon/Items/*', 'to': 'Dragons_lair'}
+{'op': 'move', 'node': 'Dragons_lair/Dragon_tooth', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Dragons_lair/Dragon_scales', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Herbs', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Herbs', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Herbs', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Knife', 'to': 'Wizard/Items'}
+{'op': 'move', 'node': 'Herbs', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Mutton_chop', 'to': 'Dragons_lair/Items'}
+{'op': 'move', 'node': 'Mutton_chop', 'to': 'Dragons_lair/Items'}
+{'op': 'move', 'node': 'Dragon/Items/*', 'to': 'Dragons_lair'}
+{'op': 'move', 'node': 'Dragon_egg', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Dragon_egg', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Island/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Ship/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Prison/Characters'}
+{'op': 'move', 'node': 'Ziutek', 'to': 'Prison/Characters'}
+{'op': 'move', 'node': 'Bandits', 'to': 'Main_hero/Characters'}
+{'op': 'move', 'node': ' Merchant/Items/Weapon', 'to': 'Main_hero/Characters/Bandits/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Ship/Characters'}
+{'op': 'move', 'node': 'Ship_guard', 'to': 'Ship/Characters'}
+{'op': 'move', 'node': 'Dragon_egg', 'to': 'Wizard/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Ship/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Ship/Characters'}
+{'op': 'move', 'node': 'Main_hero/Items/*', 'to': 'Road/Items'}
+{'op': 'move', 'node': 'secret_documents_01', 'to': 'merchants_son/Items'}
+{'op': 'move', 'node': 'merchants_son', 'to': 'Road'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'swamp_01/Characters'}
+{'op': 'move', 'node': 'merchants_leader_01', 'to': 'forest_01/Characters'}
+{'op': 'move', 'node': 'merchant_01', 'to': 'forest_01/Characters'}
+{'op': 'move', 'node': 'merchant_02', 'to': 'forest_01/Characters'}
+{'op': 'move', 'node': 'merchant_03', 'to': 'forest_01/Characters'}
+{'op': 'move', 'node': 'person/Items/*', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Elixir', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'compass_01', 'to': 'merchants_son_01/Items'}
+{'op': 'move', 'node': 'secret_documents_01', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Sheep1', 'to': 'Main_hero/Items/Bag/Characters'}
+{'op': 'move', 'node': 'Main_hero/Items/Bag/Characters/Sheep', 'to': 'Pasture/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Town_hall/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Pasture/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Pasture/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Town_hall/Characters'}
+{'op': 'move', 'node': 'Friend', 'to': 'Prison/Characters'}
+{'op': 'move', 'node': 'Ziutek', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Ziutek', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Bandits', 'to': 'Main_hero/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Ziutek', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Bandits', 'to': 'Prison/Characters'}
+{'op': 'move', 'node': 'Main_hero', 'to': 'Road/Characters'}
+{'op': 'move', 'node': 'Anywhere/Characters/Bandit', 'to': 'Bandits/Characters'}
+{'op': 'move', 'node': 'Anywhere/Characters/Bandit', 'to': 'Bandits/Characters'}
+{'op': 'move', 'node': 'Anywhere/Characters/Bandit', 'to': 'Bandits/Characters', 'Comment': 'Czy w takiej sytuacji bandyci nie powinni mieć id?'}
+{'op': 'move', 'node': 'Bandit/Items/*', 'to': 'Cave/Items'}
+{'op': 'move', 'node': 'Bandit/Items/Letter', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero/Items/Wolf_pelt', 'to': 'Common_man/Items'}
+{'op': 'move', 'node': 'Main_hero/Items/Wolf_pelt', 'to': 'Common_man/Items'}
+{'op': 'move', 'node': 'Friend', 'to': 'Main_hero/Characters'}
+{'op': 'move', 'node': 'Bandit/Items/Letter', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero/Items/Alcohol', 'to': 'Bandit/Items'}
+{'op': 'move', 'node': 'Market/Items/Strange_piece_of_metal', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Merchant/Items/Picklock', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Crops', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Main_hero/Items/Crops', 'to': 'Merchant_shady/Items'}
+{'op': 'move', 'node': 'Merchant_shady/Items/Priceless_argentinian_cactus', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Merchant_shady/Items/Carrot', 'to': 'Main_hero/Items', 'limit': 3}
+{'op': 'move', 'node': 'Main_hero/Items/Crops', 'to': 'Merchant_respected/Items'}
+{'op': 'move', 'node': 'Merchant_respected/Items/Carrot', 'to': 'Main_hero/Items', 'limit': 3}
+{'op': 'move', 'node': 'Peasant/Items/Alcohol', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Peasant/Knife', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Compass', 'to': 'Main_hero/Items'}
+{'op': 'move', 'node': 'Elixir', 'to': 'Main_hero/Items'}
+{'op': 'set', 'attribute': 'Any_character.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'BohaterB.isDistracted', 'value': True}
+{'op': 'set', 'attribute': 'Buyer.Money', 'expr': 'Buyer.Money - Something.Value'}
+{'op': 'set', 'attribute': 'Seller.Money', 'expr': 'Seller.Money + Something.Value'}
+{'op': 'set', 'attribute': 'Hero.isWounded', 'value': False}
+{'op': 'set', 'attribute': 'Hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'CharacterB.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Some_narration.xx', 'expr': 'Some_narration.xx - 1'}
+{'op': 'set', 'attribute': 'Hero.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Hero.SomeAttribute', 'value': 1}
+{'op': 'set', 'attribute': 'Hero.Knowledge', 'value': 'Jakaś wiedza.'}
+{'op': 'set', 'attribute': 'Prison_guard.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Ship_guard.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Ship_captain.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Ship_captain.isInShipCommand', 'value': False}
+{'op': 'set', 'attribute': 'Main_hero.isInShipCommand', 'value': True}
+{'op': 'set', 'attribute': 'Prison_guard.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Cooper.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 49'}
+{'op': 'set', 'attribute': 'Innkeeper.Money', 'expr': 'Innkeeper.Money - 49'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 250'}
+{'op': 'set', 'attribute': 'Merchant.Money', 'value': 0}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 50'}
+{'op': 'set', 'attribute': 'Innkeeper.Money', 'expr': 'Innkeeper.Money - 50'}
+{'Comment': 'Atrybut dodany na potrzeby questu 11', 'op': 'set', 'attribute': 'Main_hero.SneakAbility', 'value': 1}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 150'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - 40'}
+{'op': 'set', 'attribute': 'Clerk.Money', 'expr': 'Clerk.Money + 40'}
+{'op': 'set', 'attribute': 'Road.isNight', 'value': True}
+{'op': 'set', 'attribute': 'Road.isNight', 'value': False}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Bandit.Money', 'expr': 'Main_hero.Money'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'value': 0}
+{'op': 'set', 'attribute': 'Innkeepers_gratitude.Level', 'expr': 'Innkeepers_gratitude.Level - 1'}
+{'op': 'set', 'attribute': 'Well.isPoisoned', 'value': True}
+{'op': 'set', 'attribute': 'Poisoned_well_treatment.Level', 'expr': 'Poisoned_well_treatment.Level - 1'}
+{'op': 'set', 'attribute': 'Well.isPoisoned', 'value': False}
+{'op': 'set', 'attribute': 'Main_hero.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - Elixir.Value'}
+{'op': 'set', 'attribute': 'Wizard.Money', 'expr': 'Wizard.Money + Elixir.Value'}
+{'op': 'set', 'attribute': 'Wizard.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.HP', 'expr': 'Main_hero.HP + 100'}
+{'op': 'set', 'attribute': 'Dragon.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.HP', 'expr': 'Main_hero.HP - 50'}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Innkeepers_gratitude.Level', 'expr': 'Innkeepers_gratitude.Level - 1'}
+{'op': 'set', 'attribute': 'Well.isPoisoned', 'value': True}
+{'op': 'set', 'attribute': 'Poisoned_well_treatment.Level', 'expr': 'Poisoned_well_treatment.Level - 1'}
+{'op': 'set', 'attribute': 'Well.isPoisoned', 'value': False}
+{'op': 'set', 'attribute': 'Main_hero.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - Elixir.Value'}
+{'op': 'set', 'attribute': 'Wizard.Money', 'expr': 'Wizard.Money + Elixir.Value'}
+{'op': 'set', 'attribute': 'Wizard.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.HP', 'expr': 'Main_hero.HP + 100'}
+{'op': 'set', 'attribute': 'Dragon.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.HP', 'expr': 'Main_hero.HP - 50'}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Innkeepers_gratitude.Level', 'expr': 'Innkeepers_gratitude.Level - 1'}
+{'op': 'set', 'attribute': 'Well.isPoisoned', 'value': True}
+{'op': 'set', 'attribute': 'Poisoned_well_treatment.Level', 'expr': 'Poisoned_well_treatment.Level - 1'}
+{'op': 'set', 'attribute': 'Well.isPoisoned', 'value': False}
+{'op': 'set', 'attribute': 'Main_hero.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - Elixir.Value'}
+{'op': 'set', 'attribute': 'Wizard.Money', 'expr': 'Wizard.Money + Elixir.Value'}
+{'op': 'set', 'attribute': 'Wizard.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.HP', 'expr': 'Main_hero.HP + 100'}
+{'op': 'set', 'attribute': 'Dragon.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.HP', 'expr': 'Main_hero.HP - 50'}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Barrel/Plug.isPlugged', 'value': False}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Chest.isOpen', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.SneakAbility', 'value': 2}
+{'op': 'set', 'attribute': 'Main_hero.HorseRiding', 'value': 1}
+{'op': 'set', 'attribute': 'Documents.isClosed', 'value': False}
+{'op': 'set', 'attribute': 'Lumberjack.Money', 'expr': 'Lumberjack.Money - 50'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 50'}
+{'op': 'set', 'attribute': 'Lumberjack.isCarpenter', 'value': True}
+{'op': 'set', 'attribute': 'Merchant_respected.Money', 'expr': 'Merchant_respected.Money - 5'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 5'}
+{'op': 'set', 'attribute': 'Lumberjack.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Daughter.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Lumberjack.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Daughter.isWounded', 'value': True}
+{'op': 'set', 'attribute': 'Merchant_respected.Money', 'expr': 'Merchant_respected.Money - 50'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 50'}
+{'op': 'set', 'attribute': 'Main_hero.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - Bribe_expectations.BribeValue'}
+{'op': 'set', 'attribute': 'Guard.Money', 'expr': 'Guard.Money + Bribe_expectations.BribeValue'}
+{'op': 'set', 'attribute': 'Main_hero.isWounded', 'value': True}
+{'op': 'set', 'in': 'Main_hero/Narration', 'attribute': 'Merchant_shady_town_hall_quest.Knowledge', 'value': 'Bohater zgodził się na kradzież listu z ratusza.'}
+{'op': 'set', 'attribute': 'Pirate/Narration/Pirate_quest_treasure_sub_quest_active.Knowledge', 'value': 'Bohater ma skarb. Chcę go zdobyć za wszelką cenę!'}
+{'op': 'set', 'attribute': 'Pirate/Narration/Pirate_quest_treasure_sub_quest_active.Knowledge', 'value': 'Znalazłem skarb. Nie mam zamiaru się nim dzielić!'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - 1'}
+{'op': 'set', 'attribute': 'Merchant.Money', 'expr': 'Merchant.Money + 1'}
+{'op': 'set', 'attribute': 'Innkeepers_gratitude.Level', 'expr': 'Innkeepers_gratitude.Level - 1'}
+{'op': 'set', 'attribute': 'Well.isPoisoned', 'value': True}
+{'op': 'set', 'attribute': 'Poisoned_well_treatment.Level', 'expr': 'Poisoned_well_treatment.Level - 1'}
+{'op': 'set', 'attribute': 'Well.isPoisoned', 'value': False}
+{'op': 'set', 'attribute': 'Main_hero.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.HP', 'expr': 'Main_hero.HP + 100'}
+{'op': 'set', 'attribute': 'Dragon.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.HP', 'expr': 'Main_hero.HP - 50'}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - Herbs.Value'}
+{'op': 'set', 'attribute': 'Wizard.Money', 'expr': 'Wizard.Money + Herbs.Value'}
+{'op': 'set', 'attribute': 'Dragon.isDistracted', 'value': False}
+{'op': 'set', 'attribute': 'Dragon.isDistracted', 'value': False}
+{'op': 'set', 'attribute': 'Dragon.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Dragon.isAsleep', 'value': True}
+{'op': 'set', 'attribute': 'Ziutek.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isInShipCommand', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isInShipCommand', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isInShipCommand', 'value': True}
+{'op': 'set', 'attribute': 'Ship_captain.isInShipCommand', 'value': False}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Ziutek.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - Merchant/Items/Weapon.Value'}
+{'op': 'set', 'attribute': 'Merchant.Money', 'expr': 'Merchant.Money + Merchant/Items/Weapon.Value'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - 50'}
+{'op': 'set', 'attribute': 'Ship_guard.Money', 'expr': 'Ship_guard.Money + 50'}
+{'op': 'set', 'attribute': 'Ship_guard.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Ship_captain.isDead', 'value': True}
+{'op': 'set', 'attribute': 'merchants_leader_01.isDead', 'value': True}
+{'op': 'set', 'attribute': 'merchant_01.isDead', 'value': True}
+{'op': 'set', 'attribute': 'merchant_02.isDead', 'value': True}
+{'op': 'set', 'attribute': 'merchant_03.isDead', 'value': True}
+{'op': 'set', 'attribute': 'merchant_04.isDead', 'value': True}
+{'op': 'set', 'attribute': 'merchant_05.isDead', 'value': True}
+{'op': 'set', 'attribute': 'merchant_06.isDead', 'value': True}
+{'op': 'set', 'attribute': 'wolf_01.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - 1'}
+{'op': 'set', 'attribute': 'Innkeeper_assistant.Money', 'expr': 'Innkeeper_assistant.Money + 1'}
+{'op': 'set', 'attribute': 'Main_hero.isPoisonImmune', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isDrunk', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Sheep1.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Sheep2.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Sheep3.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Sheep4.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Sheep1.LooksLikeBandit', 'value': True}
+{'op': 'set', 'attribute': 'Sheep2.LooksLikeBandit', 'value': True}
+{'op': 'set', 'attribute': 'Sheep3.LooksLikeBandit', 'value': True}
+{'op': 'set', 'attribute': 'Sheep4.LooksLikeBandit', 'value': True}
+{'op': 'set', 'attribute': 'Sheep1.isStolen', 'value': True}
+{'op': 'set', 'attribute': 'Sheep1.isStolen', 'value': False}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 3'}
+{'op': 'set', 'attribute': 'Shepherd.Money', 'expr': 'Shepherd.Money - 3'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 3'}
+{'op': 'set', 'attribute': 'Shepherd.Money', 'expr': 'Shepherd.Money - 3'}
+{'op': 'set', 'attribute': 'Main_hero.isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero/Narration/Talk_with_shepherd.Knowledge', 'value': 'Task complete. Go to Shepherd to receive a reward.'}
+{'op': 'set', 'attribute': 'Friend.Loyalty', 'expr': '0'}
+{'op': 'set', 'attribute': 'Ziutek.Loyalty', 'expr': 'Ziutek.Loyalty + 1'}
+{'op': 'set', 'attribute': 'Main_hero.Badassness', 'expr': 'Main_hero.Badassness + 1'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - 50'}
+{'op': 'set', 'attribute': 'Prison_guard.Money', 'expr': 'Prison_guard.Money + 50'}
+{'op': 'set', 'attribute': 'Ziutek.Loyalty', 'expr': 'Ziutek.Loyalty + 1'}
+{'op': 'set', 'attribute': 'Main_hero.Badassness', 'expr': 'Main_hero.Badassness + 1'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - 10'}
+{'op': 'set', 'attribute': 'Main_hero.Badassness', 'expr': 'Main_hero.Badassness - 1'}
+{'op': 'set', 'attribute': 'Main_hero.BanditsRelations', 'expr': 'Main_hero.BanditsRelations + 1', 'Comment': 'Atrybut służy do blokowania alternatywnych sposobów wyciągnięcia Ziutka z więzienia.'}
+{'op': 'set', 'attribute': 'Main_hero.Badassness', 'expr': 'Main_hero.Badassness + 1'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - 20'}
+{'op': 'set', 'attribute': 'Bandits.Money', 'expr': 'Bandits.Money + 20'}
+{'op': 'set', 'attribute': 'Main_hero.BanditsRelations', 'expr': 'Main_hero.BanditsRelations = 0'}
+{'op': 'set', 'attribute': 'Ziutek.Loyalty', 'expr': 'Ziutek.Loyalty + 1'}
+{'op': 'set', 'attribute': 'Main_hero.Badassness', 'expr': 'Main_hero.Badassness + 1'}
+{'op': 'set', 'attribute': 'Main_hero.BanditsRelations', 'expr': '0'}
+{'op': 'set', 'attribute': 'Main_hero.Badassness', 'expr': 'Main_hero.Badassness - 1'}
+{'op': 'set', 'attribute': 'Bandit.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Hero.Money', 'expr': 'Hero.Money + 5'}
+{'op': 'set', 'attribute': 'wolf.isDead', 'value': True}
+{'op': 'set', 'attribute': 'Bandit.isDistracted', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.isWounded', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero/Narration/Help_on_the_fields_quest.TalkedWithPeasant', 'value': False}
+{'op': 'set', 'attribute': 'Main_hero/Narration/Help_on_the_fields_quest.TalkedWithPeasant', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero/Narration/Help_on_the_fields_quest.Knowledge', 'value': 'Chłop odmówił zapłaty za rzepę, ale powiedział, bym sprzedał ją na targowisku i przyniósł mu część utargu(2 Money).'}
+{'op': 'set', 'attribute': 'Peasant/Attributes/AngryAtHero', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero/Attributes/isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Peasant/Attributes/isGrateful', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - 1'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 2'}
+{'op': 'set', 'attribute': 'Peasant.Money', 'expr': 'Peasant.Money - 1'}
+{'op': 'set', 'attribute': 'Innkeeper_assistant.Money', 'expr': 'Innkeeper_assistant.Money -1'}
+{'op': 'set', 'attribute': 'Main_hero.hasPlayingCardsSkills', 'expr': 'Main_hero.hasPlayingCardsSkills + 1'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - 1'}
+{'op': 'set', 'attribute': 'Peasant.Money', 'expr': 'Peasant.Money + 1'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money - 1'}
+{'op': 'set', 'attribute': 'Innkeeper_Assistant.Money', 'expr': 'Innkeeper_Assistant.Money + 1'}
+{'op': 'set', 'attribute': 'Main_hero/Narration/Innkeeper_assistant_lose_quest.Knowledge', 'value': 'Skrytka znajduje sie gdzieś w karczmie.'}
+{'op': 'set', 'attribute': 'Main_hero/Narration/Innkeeper_assistant_lose_quest.Knowledge', 'value': 'Znalazłem skrzynkę, będzie opening.'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 2'}
+{'op': 'set', 'attribute': 'isWanted', 'value': True}
+{'op': 'set', 'attribute': 'Main_hero.HP', 'expr': 'Main_hero.HP + 100'}
+{'op': 'set', 'attribute': 'Main_hero.Money', 'expr': 'Main_hero.Money + 5'}
+{'op': 'unset', 'attribute': 'Bohater.isWanted'}
+{'op': 'unset', 'attribute': 'Hero.isWounded'}
+{'op': 'unset', 'attribute': 'xx.Knowledge'}
+{'op': 'unset', 'attribute': 'Main_hero.isWanted'}
+{'op': 'unset', 'attribute': 'Main_hero.isWanted'}
+{'op': 'unset', 'attribute': 'Main_hero.isWanted'}
+------------------------------------------------------------
+possible keys in instruction
+{'in', 'sheaf', 'node', 'value', 'expr', 'limit', 'attribute', 'to', 'op', 'nodes', 'Comment'}
+------------------------------------------------------------

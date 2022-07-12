@@ -1,0 +1,929 @@
+def neighbours_mismatch_removal_st(matches: list, ls_node_match: dict, w_node: dict, single_match: bool = True):
+    ls_node = ls_node_match['ls_node']
+
+    # obie porównywanie lokacje mają sąsiadów
+    if ls_node.get('Connections') and w_node.get('Connections') and len(ls_node['Connections']) <= len(w_node['Connections']):
+        conn_ls = []
+        conn_ls_names = []
+        for e in ls_node['Connections']:
+            conn_ls.append(e['Destination'])
+            if 'Name' in e['Destination']:
+                conn_ls_names.append(e['Destination']['Name'])
+        conn_w = []
+        conn_w_names = []
+        for e in w_node['Connections']:
+            conn_w.append(e['Destination'])
+            conn_w_names.append(e['Destination']['Name'])
+
+        # wykluczamy ze zbiorów połączeń nazwy, które się powtarzają równo po obu stronach
+        for conn in set(conn_ls_names):
+            nr_ls = conn_ls_names.count(conn)
+            nr_w = conn_w_names.count(conn)
+            id_node_list = []
+            if nr_ls > nr_w:
+                print(f"Tu powinien być break, bo w lewej stronie jest więcej lokacji o nazwie „{conn}” "
+                      f"niż w świecie.")
+                return False
+            elif nr_ls == nr_w:
+                if single_match and nr_ls == 1:
+                    for location in matches:
+                        unique_ls = [x for x in matches if x['ls_node'].get('Name') == conn]
+                        unique_w = [x for x in conn_w if x['Name'] == conn]
+                        if location is unique_ls:
+                            if unique_w[0] in location['w_node_list']:  # TODO: w to nigdy nie wchodzę, trzeba przetestować
+                                location['w_node'] = unique_w
+                                neighbours_mismatch_removal(matches, unique_ls[0], unique_w[0], single_match=True)
+                            else:
+                                # location['w_node'] = [] załatwimy to zwracając False
+                                print(f"Tu powinien być break, bo węzeł o nazwie „{conn}” jest pusto dopasowany.")
+                                return False
+
+
+                for i in conn_w:
+                    if i['Name'] == conn:
+                        conn_w.remove(i)
+                for i in conn_ls:
+                    if i['Name'] == conn:
+                        conn_ls.remove(i)
+
+        # conn_i = conn_ls.intersection(conn_w)
+        # conn_ls -= conn_i
+        # conn_w -= conn_i
+
+
+        # wszystkim węzłom-sąsiadom danej lokacji identyfikowanym przez id ograniczamy zbiór możliwych rozwinięć
+        for m in matches:
+            for e in conn_ls:
+                if e['Id'] == m['ls_node']['Id']:
+                    if m.get('w_nodes_list'):
+                        intersection = [x for x in m['w_nodes_list'] if x in conn_w]
+                        if single_match:
+                            m['w_nodes_list'] = intersection
+                            if len(intersection) == 0:
+                                print(f"Ostatnie dopasowanie do „{m['ls_node']['Id']}” zostało usunięte.")
+                                try:
+                                    # for original in matches:
+                                    #     if original['ls_node'] == ls_node:
+                                    #         original['w_nodes_list'].remove(w_node)
+                                    ls_node_match['w_nodes_list'].remove(w_node)
+                                    # TODO: sprawdzić, czemu nie działa to co poniżej zakomentowane
+                                    # if len(ls_node_match['w_nodes_list']) == 1:
+                                    #     neighbours_mismatch_removal(matches, ls_node_match, ls_node_match['w_nodes_list'][0])
+                                except:
+                                    print("Coś poszło bardzo nie tak z usuwaniem niepasującego węzła świata.")
+                                return False
+                            if len(intersection) == 1:  # TODO: w to nigdy nie wchodzę, trzeba przetestować
+                                neighbours_mismatch_removal(matches, ls_node_match, m['w_nodes_list'][0])
+                        else:
+                            if len(intersection) == 0:
+                                print(f"Wariant dopasowania {w_node['Name']} do „{m['ls_node']['Id']}” jest niemożliwy.")
+                                try:
+                                    # for original in matches:
+                                    #     if original['ls_node'] == ls_node:
+                                    #         original['w_nodes_list'].remove(w_node)
+                                    ls_node_match['w_nodes_list'].remove(w_node)
+                                    # TODO: sprawdzić, czemu nie działa to co poniżej zakomentowane
+                                    # if len(ls_node_match['w_nodes_list']) == 1:
+                                    #     neighbours_mismatch_removal(matches, ls_node_match,
+                                    #                             ls_node_match['w_nodes_list'][0])
+                                except:
+                                    print("Coś poszło bardzo nie tak z usuwaniem niepasującego węzła świata.")
+
+    # w produkcji są sąsiedzi, w świecie nie ma, czyli błąd
+    elif 'Connections' in ls_node and ls_node['Connections']:
+        print(f"Dopasowanie „{ls_node.get('Name',ls_node.get('Id')), w_node['Name']}” jest niemożliwe, bo w produkcji "
+              f"mamy niepustą listę sąsiadów a w świecie nie.")
+        return False
+
+    return True
+
+
+def fit(ls_element: dict, world_element: dict) -> list:
+    """
+    Check if parameters of two modes fit: name, attributes, number of children in each layer
+    :param ls_element: node from the production
+    :param world_element: node from the world
+    :return: True or False
+    """
+
+    if 'Name' in ls_element and world_element['Name'] != ls_element['Name']:
+        print(f"Potomek {len([x for x in inspect.stack(0) if x.function == 'fit'])-1} rzędu: {ls_element['Name']} i {world_element['Name']} nie pasują do siebie.")
+        return []
+
+    if 'Attributes' in ls_element and ls_element['Attributes']:
+        if 'Attributes' not in world_element:
+            print(f"Potomek {len([x for x in inspect.stack(0) if x.function == 'fit'])-1} rzędu: "
+                  f"{ls_element.get('Id', ls_element.get('Name'))} ma atrybuty {ls_element['Attributes']} a "
+                  f"{world_element['Name']} nie ma.")
+            return []
+        for attr, v in ls_element['Attributes'].items():
+            if attr not in world_element['Attributes']:
+                # test = inspect.stack()
+                print(
+                    f"Potomek {len([x for x in inspect.stack(0) if x.function == 'fit']) - 1} rzędu: "
+                    f"{ls_element.get('Id', ls_element.get('Name'))} ma atrybut {attr} o wartości {v} a "
+                    f"{world_element['Name']} nie ma.")
+                return []
+            if v is not None and v != world_element['Attributes'][attr]:
+                print(
+                    f"Potomek {len([x for x in inspect.stack(0) if x.function == 'fit']) - 1} rzędu: {ls_element.get('Id', ls_element.get('Name'))} ma atrybut "
+                    f"{attr} o wartości {v} a {world_element['Name']} ma {world_element['Attributes'].get(attr)}.")
+
+
+    for layer in ['Characters', 'Items', 'Narration']:
+        if layer in ls_element and len(ls_element[layer]) > 0:
+            if layer not in world_element:
+                print(f"Potomek {len([x for x in inspect.stack(0) if x.function == 'fit'])-1} rzędu: {ls_element.get('Id', ls_element.get('Name'))} ma dzieci "
+                      f"w warstwie {layer} ({[x.get('Id', x.get('Name')) for x in ls_element[layer]]}) a {world_element['Name']} nie ma.")
+                return []
+            elif len(ls_element[layer]) > len(world_element[layer]):
+                print(f"Potomek {len([x for x in inspect.stack(0) if x.function == 'fit'])-1} rzędu: {ls_element.get('Id', ls_element.get('Name'))} ma więcej dzieci "
+                      f"w warstwie {layer} niż {world_element['Name']} .")
+                return []
+
+    children_matches = []
+    for layer in ['Characters', 'Items', 'Narration']:
+        if layer in ls_element and len(ls_element[layer]) > 0:
+            if layer not in world_element:
+                print(f"Potomek {len([x for x in inspect.stack(0) if x.function == 'fit'])-1} rzędu: {ls_element.get('Id', ls_element.get('Name'))} ma dzieci "
+                      f"w warstwie {layer} a {world_element['Name']} nie ma.")  # to raczej jest redundantne
+                return []
+            else:
+                layer_matches = children_match(ls_element[layer], world_element[layer])
+                if len([x for x in inspect.stack(0) if x.function == 'fit']) == 2:
+                    print("Głębiej nie zejdziemy")
+                if not layer_matches:
+                    print(f"Potomek {len([x for x in inspect.stack(0) if x.function == 'fit'])-1} rzędu: Dzieci w warstwie {layer} węzła "
+                          f"{ls_element.get('Id', ls_element.get('Name'))} i "
+                          f" {world_element['Name']} nie pasują do siebie.")
+                    return []
+                else:
+                    children_matches.append(layer_matches)
+
+    children_fit = []
+    cartesian_product = product(*children_matches)
+    for e in cartesian_product:
+        # print('dupa')
+        list_from_tuple = []
+        for f in e:
+            list_from_tuple.extend(f)
+        children_fit.append(list_from_tuple)
+
+    return children_fit
+
+
+def children_match(ls_elements, world_elements):
+    matched_pairs = []
+    ls_names_set = set()
+    ls_names_dict = {}
+    w_names_dict = {}
+    w_names_set = set()
+    for e in world_elements:
+        if e['Name'] not in w_names_dict:
+            w_names_set.add(e['Name'])
+            w_names_dict[e['Name']] = [e]
+        else:
+            w_names_dict[e['Name']].append(e)
+    for e in ls_elements:
+        if 'Name' in e:
+            if e['Name'] not in ls_names_dict:
+                ls_names_set.add(e['Name'])
+                ls_names_dict[e['Name']] = [e]
+            else:
+                ls_names_dict[e['Name']].append(e)
+
+    # sprawdzanie dopasowania dzieci o identycznej nazwie
+    if not ls_names_set.issubset(w_names_set):
+        return False
+    else:
+        for ls_name in ls_names_dict.keys():
+            if len(ls_names_dict[ls_name]) > len(w_names_dict[ls_name]):
+                return False
+            # tworzenie listy permutacji węzłów świata
+            possibilities = []
+            for element in permutations(w_names_dict[ls_name], len(ls_names_dict[ls_name])):
+                possibilities.append(list(element))
+
+            possible_tuples = []
+            for possibility in possibilities:
+                possible_tuples.append(list(zip(ls_names_dict[ls_name], possibility)))
+
+            # usuwanie niepasujących permutacji
+            errors = []
+            # possible_tuples_checked = []
+            all_nodes_fit = []
+            for possibility in possible_tuples:
+                fitting_tupla = True
+                tuple_nodes_fit = []
+
+                for l, w in possibility:
+                    nodes_fit = fit(l, w)
+                    if not nodes_fit:
+                        errors.append(possibility)
+                        fitting_tupla = False
+                        break
+                    else:
+                        tuple_nodes_fit.append(nodes_fit)
+
+                if fitting_tupla:
+                    extended_tupla_product = product(*tuple_nodes_fit)
+                    ttt = list(product(*tuple_nodes_fit))
+                    list_from_tuple = []
+                    for e in extended_tupla_product:
+                        tmp = []
+                        for p_part in possibility:
+                            tmp.append(p_part)
+                        for e_part in e:
+                            for f in e_part:
+                                tmp.append(f)
+                        list_from_tuple.append(tmp)
+                    all_nodes_fit.extend(list_from_tuple)
+
+            for e in errors:
+                if e in possible_tuples:
+                    possible_tuples.remove(e)
+
+            # tworzenie iloczynu kartezjańskiego permutacji dotychczas wybranych węzłów z permutacjami obecnego
+            if matched_pairs:
+                cartesian_product = product(matched_pairs, all_nodes_fit) #_checked
+                matched_pairs = []
+                for e in cartesian_product:
+                    list_from_tuple = []
+                    for f in e:
+                        list_from_tuple.extend(f)
+                    matched_pairs.append(list_from_tuple)
+            else:
+                matched_pairs = all_nodes_fit #_checked
+
+    # sprawdzanie dopasowania dzieci posiadających wyłącznie id
+    ls_only_id = []
+    for e in ls_elements:
+        if 'Name' not in e and 'Id' in e:
+            ls_only_id.append(e)
+
+    # Jeżeli mamy dopasowania węzłów po nazwach, to ograniczamy zbiór dostępnych węzłów
+    if matched_pairs:
+        new_matched_pairs = []
+        for subset in matched_pairs:
+            used_w_nodes = []
+            unused_w_nodes = []
+            for (ls_node, w_node) in subset:
+                used_w_nodes.append(w_node)
+            for node in world_elements:
+                if node not in used_w_nodes:
+                    unused_w_nodes.append(node)
+
+            if len(ls_only_id) > len(unused_w_nodes):
+                return False
+
+            # tworzenie listy permutacji węzłów świata
+            possibilities = []
+            for element in permutations(unused_w_nodes, len(ls_only_id)):
+                possibilities.append(list(element))
+
+            # parowanie permutacji świata z węzłami ls
+            possible_tuples = []
+            for possibility in possibilities:
+                possible_tuples.append(list(zip(ls_only_id, possibility)))
+
+            # usuwanie niepasujących permutacji
+            errors = []
+            all_nodes_fit = []
+            for possibility in possible_tuples:
+                fitting_tupla = True
+                tuple_nodes_fit = []
+
+                for l, w in possibility:
+                    nodes_fit = fit(l, w)
+                    if not nodes_fit:
+                        errors.append(possibility)
+                        fitting_tupla = False
+                        break
+                    else:
+                        tuple_nodes_fit.append(nodes_fit)
+                if fitting_tupla:
+                    extended_tupla_product = product(*tuple_nodes_fit)
+                    list_from_tuple = []
+                    for e in extended_tupla_product:
+                        tmp = []
+                        for p_part in possibility:
+                            tmp.append(p_part)
+                        for e_part in e:
+                            for f in e_part:
+                                tmp.append(f)
+                        list_from_tuple.append(tmp)
+                    all_nodes_fit.extend(list_from_tuple)
+            for e in errors:
+                possible_tuples.remove(e)
+
+            # tworzenie iloczynu kartezjańskiego permutacji dotychczas wybranych węzłów z permutacjami obecnego
+            cartesian_product = product([subset], all_nodes_fit)
+
+            for e in cartesian_product:
+                list_from_tuple = []
+                for f in e:
+                    list_from_tuple.extend(f)
+                new_matched_pairs.append(list_from_tuple)
+
+        matched_pairs = new_matched_pairs
+
+    # Jeżeli nie mamy dopasowania węzłów po nazwach, to nie ograniczamy zbioru dostępnych węzłów
+    else:
+        # tworzenie listy permutacji węzłów świata
+        possibilities = []
+        for element in permutations(world_elements, len(ls_only_id)):
+            possibilities.append(list(element))
+
+        # parowanie permutacji świata z węzłami ls
+        possible_tuples = []
+        for possibility in possibilities:
+            possible_tuples.append(list(zip(ls_only_id, possibility)))
+
+        # usuwanie niepasujących permutacji
+        errors = []
+        all_nodes_fit = []
+        for possibility in possible_tuples:
+            # print('zadek')
+            fitting_tupla = True
+            tuple_nodes_fit = []
+
+            for l, w in possibility:
+                nodes_fit = fit(l, w)
+                if not nodes_fit:
+                    errors.append(possibility)
+                    fitting_tupla = False
+                    break
+                else:
+                    tuple_nodes_fit.append(nodes_fit)
+            if fitting_tupla:
+                extended_tupla_product = product(*tuple_nodes_fit)
+                list_from_tuple = []
+                for e in extended_tupla_product:
+                    tmp = []
+                    for e_part in e:
+                        for f in e_part:
+                            tmp.append(f)
+                    list_from_tuple.append(tmp)
+                all_nodes_fit.extend(list_from_tuple)
+        for e in errors:
+            possible_tuples.remove(e)
+
+        matched_pairs = possible_tuples
+
+    return matched_pairs
+
+
+
+
+
+
+
+
+# stara wersja, która nie operuje bezpośrednio na węzłach sąsiedztwa
+def what_to_do_st(world: Union[list, dict], character: str, production_list: list) -> list:
+    """
+    Match left-hand sides of the productions to the world given to find the set of applicable productions.
+    :param world: The graph of the actual world state
+    :param character: The character to be the object of the action (most often the main hero)
+    :param production_list: The list of productions to match
+    :return:
+    """
+
+    initial_paths = breadcrumb_pointer(world, name=character, layer='Characters')
+    world_main_location = initial_paths[0][-2]
+    all_world_locations = names_from_list(list_from_tree({"Locations": world}), layer='Locations')
+    all_matches = []
+
+    for prod in production_list:
+
+        # inicjowanie tabeli lokacji dla produkcji
+        ls_locations = prod['LSide']['Locations']
+        ls_main_location = ls_locations[0]
+        matches = []
+
+        # dodawanie do tabeli lokacji tej lokacji, w której znajduje się postać-sprawca
+        data = {}
+        if 'Id' in ls_main_location:
+            data['id'] = ls_main_location['Id']
+        if 'Name' in ls_main_location:
+            if ls_main_location['Name'] == world_main_location['Name']:
+                data['names'] = {world_main_location['Name']}
+            else:
+                print(f"Tu powinien być break, bo lokacja główna jest podana explicite: „{ls_main_location['Name']}” "
+                    f"i nie jest to: „{world_main_location['Name']}”.")
+        else: # mamy tylko id
+            data['names'] = {world_main_location['Name']}
+        data['w_node'] = world_main_location
+        data['ls_node'] = ls_main_location
+        matches.append(data)
+
+        # dodawanie do tabeli lokacji pozostałych lokacji i dopasowanie węzłów po znanych nazwach
+        for location in ls_locations[1:]:
+            data = {}
+            if 'Id' in location:
+                data['id'] = location['Id']
+            if 'Name' in location:
+                data['names'] = {location['Name']}
+                paths = breadcrumb_pointer(world, name = location['Name'])
+                if paths:
+                    data['w_node'] = paths[0][-1]
+                else:
+                    print(f"Tu powinien być break, bo w świecie nie ma ścieżki do lokacji "
+                          f"o nazwie „{location['Name']}”.")
+            data['ls_node'] = location
+            matches.append(data)
+
+        # uzupełnianie listy alternatyw dla lokacji, których nie dało się niczym ograniczyć
+        all_matched_locations = set()
+        for location in matches:
+            if 'names' in location and len(location['names']) == 1 and 'w_node' in location:
+                all_matched_locations = all_matched_locations.union(location['names'])
+        all_unused_locations = all_world_locations - all_matched_locations
+        for location in matches:
+            if 'names' not in location or location['names'] == {}:
+                location['names'] = all_unused_locations
+
+        # rozwijanie id na podstawie sąsiadów lokacji znanych
+        for location, nr in zip(ls_locations, range(len(ls_locations))):
+            if 'w_node' in matches[nr] and matches[nr]['w_node']:
+
+                # obie porównywanie lokacje mają sąsiadów
+                if ('Connections' in location) and location['Connections'] and \
+                        ('Connections' in matches[nr]['w_node']) and matches[nr]['w_node']['Connections']:
+                    conn_ls = set()
+                    for e in location['Connections']:
+                        conn_ls.add(e['Destination'])
+                    conn_w = set()
+                    for e in matches[nr]['w_node']['Connections']:
+                        conn_w.add(e['Destination'])
+
+                    # wykluczamy ze zbiorów połączeń nazwy, bo interesują nas id
+                    conn_i = conn_ls.intersection(conn_w)
+                    conn_ls -= conn_i
+                    conn_w -= conn_i
+
+                    # wszystkim węzłom-sąsiadom danej lokacji identyfikowanym przez id dodajemy zbiór możliwych rozwinięć
+                    for m in matches:
+                        for e in conn_ls:
+                            if e == m['id']:
+                                if 'names' in m and m['names']:
+                                    m['names'] = m['names'].intersection(conn_w)
+                                else:
+                                    m['names'] = conn_w
+
+                # w produkcji są sąsiedzi, w świecie nie ma, czyli błąd
+                elif 'Connections' in location and location['Connections']:
+                    print("Tu powinien być break, bo w produkcji mamy niepustą listę sąsiadów a w świecie nie.")
+
+        # usuwanie z listy alternatyw lokacji, których sąsiedztwo nie zawiera sąsiedztwa wymaganego w produkcji
+        for location, nr2 in zip(ls_locations, range(len(ls_locations))):
+            conn_ls = set()
+
+            # interesują nas tylko lokacje z sąsiadami
+            if 'Connections' in location:
+                for e in location['Connections']:
+                    conn_ls.add(e['Destination'])
+
+                # interesują nas tylko lokacje z listą alternatyw
+                if 'names' in matches[nr2]:
+                    errors = set()
+                    for possibility in matches[nr2]['names']:
+                        paths = breadcrumb_pointer(world, name = possibility)
+                        if not paths:
+                            print(f"Tu powinien być break, bo w świecie nie ma ścieżki do lokacji "
+                                  f"o nazwie „{possibility}”.")
+                        else:
+                            # tłumaczymy id lokacji z sąsiedztwa na nazwy dzięki wcześniejszym dopasowaniom
+                            conn_ls_translated = set()
+                            for e in conn_ls:
+                                for f in matches:
+                                    if 'id' in f and f['id'] == e and len(f['names']) == 1:
+                                        conn_ls_translated = conn_ls_translated.union(f['names'])
+
+                            # znajdujemy lokację w świecie i sprawdzamy zawieranie sąsiedztwa
+                            node = paths[0][-1]
+                            conn_w = set()
+                            if 'Connections' in node:
+                                for e in node['Connections']:
+                                    conn_w.add(e['Destination'])
+                            if not conn_ls_translated.issubset(conn_w):
+                                errors.add(possibility)
+                        # przykład, na którym sprawdzałam:
+                        # 'Lokacja_A', [{'Destination': 'Lokacja_B'}]
+                        # "Inn" [{'Destination': 'Road'}, {'Destination': 'Pasture'}]
+                        # 'Lokacja_B', [{'Destination': 'Lokacja_A'}]
+                        # "Pasture" [{'Destination': 'Road'}, {'Destination': 'Village'}]
+                        # "Road" [{'Destination': 'Forest'}, {'Destination': 'Inn'}, {'Destination': 'Pasture'}, {'Destination': 'Village'}, {'Destination': 'Wizards_hut'}]
+
+                    for e in errors:
+                        matches[nr2]['names'].remove(e)
+                    if errors and len(matches[nr2]['names']) == 1:
+                        matches[nr2]['w_node'] = breadcrumb_pointer(world, name = list(matches[nr2]['names'])[0])[0][-1]
+
+        # usuwanie węzłów, których atrybuty, liczba dzieci etc nie pasują.
+        for location, nr in zip(ls_locations, range(len(ls_locations))):
+            if 'names' in matches[nr]:
+                errors = set()
+                for possibility in matches[nr]['names']:
+                    paths = breadcrumb_pointer(world, name = possibility)
+                    if paths:
+                        fitting_result = fit(location, paths[0][-1])
+                        if not fitting_result:
+                            if len(matches[nr]['names']) == 1:
+                                print(f"Tu powinien być break, bo właśnie usuwamy ostatnie dopasowanie lokacji.")
+                            else:
+                                errors.add(possibility)
+                        else:
+                            # print("Sama nie wiem")
+                            if 'children_matches' not in matches[nr]:
+                                matches[nr]['children_matches'] = []
+                            matches[nr]['children_matches'].append(fitting_result)
+                    else:
+                        print(f"Tu powinien być break, bo w świecie nie ma ścieżki do lokacji "
+                              f"o nazwie „{possibility}”.")
+                for e in errors:
+                    matches[nr]['names'].remove(e)
+                if errors and len(matches[nr]['names']) == 1:
+                    matches[nr]['w_node'] = breadcrumb_pointer(world, name = list(matches[nr]['names'])[0])[0][-1]
+
+        # robocze wypisywanie dopasowań
+        print(prod['Title'].split("/")[0])
+        for m in matches:
+            print('     ', end='')
+            if 'id' in m:
+                print('id =', m['id'], end = ', ')
+            else:
+                print('brak id', end = ', ')
+            if 'names' in m:
+                print('names =', m['names'], end = ', ')
+            else:
+                print('brak name', end = ', ')
+            if 'ls_node' in m:
+                print('ls_node =', str(m['ls_node'])[0:40],'...', end = ', ')
+            else:
+                print('brak ls_node', end=', ')
+            if 'w_node' in m:
+                print('w_node =', str(m['w_node'])[0:40], '...', end = ', ')
+            else:
+                print('brak w_node', end=', ')
+            print()
+
+        # print({pair[0]: pair[1] for pair in
+        #     filter(lambda dict_entry: dict_entry[0] in ('id', 'names'), i.items())})
+
+        # stworzenie alternatywnych list par wierzchołków
+        current_matches = []
+        for m in matches:
+            current_matches2 = []
+            # id_or_name = 'Id' if 'Id' in m['ls_node'] else 'Name' if 'Name' in m['ls_node'] else None
+            if 'w_node' in m:
+                if not current_matches:
+                    temp_node = {'ls_node': m['ls_node'], 'w_node': m['w_node']}
+                    if 'children_matches' in m:
+                        temp_node['children'] = m['children_matches']
+                    current_matches2.append([temp_node])
+                else:
+                    for c in current_matches:
+                        temp_node = {'ls_node': m['ls_node'], 'w_node': m['w_node']}
+                        if 'children_matches' in m:
+                            temp_node['children'] = m['children_matches']
+                        c.append(temp_node)
+                        current_matches2.append(c)
+            elif 'names' in m:
+                for n in m['names']:
+                    paths = breadcrumb_pointer(world, name = n)
+                    if paths:
+                        if not current_matches:
+                            temp_node = {'ls_node': m['ls_node'], 'w_node': paths[0][-1]}
+                            if 'children_matches' in m:
+                                temp_node['children'] = m['children_matches']
+                                print("Dziwne")
+                            current_matches2.append([temp_node])
+                        else:
+                            for c in current_matches:
+                                cprim = deepcopy(c)
+                                temp_node = {'ls_node': m['ls_node'], 'w_node': paths[0][-1]}
+                                if 'children_matches' in m:
+                                    temp_node['children'] = m['children_matches']
+                                    print("Dziwne")
+                                cprim.append(temp_node)
+                                current_matches2.append(cprim)
+            current_matches = current_matches2
+
+
+        # for c in current_matches:
+        #     for d in c:
+        #         print(str(d['ls_node'])[0:20], '...', str(d['w_node'])[0:20], '...', end = ', ')
+        #     print()
+        # cartesian_product = list(product(*current_matches)
+
+
+        all_matches.append({'title': prod['Title'], 'matches': current_matches})
+
+    # wyświetlanie listy dopasowań
+    for a in all_matches: # dopasowane produkcje
+        print(a['title'])
+        for c in a['matches']: # warianty układu lokacji
+            for d in c: # snopki
+                id_or_name = 'Id' if 'Id' in d['ls_node'] else 'Name' if 'Name' in d['ls_node'] else None
+                print('    ', str(d['ls_node'][id_or_name])[0:20], ' -> ', str(d['w_node']['Name'])[0:20], end = ', ')
+                print()
+                if 'children' in d:
+                    print('    ', len(d['children']), 'zestaw(y/ów)')
+                    for e in d['children']:
+                        print('    ', '    ', len(e), 'wariant(y/ów) pasujących węzłów')
+                        print('    ', '    ', end='')
+                        for f in e:
+                            for g in f:
+                                if 'Id' in g[0]:
+                                    given_id = g[0]['Id']
+                                else:
+                                    given_id = ''
+                                if 'Name' in g[0]:
+                                    given_name = g[0]['Name']
+                                else:
+                                    given_name = ''
+                                if given_name and given_id:
+                                    name_or_id_ls = given_id + '-' + given_name
+                                else:
+                                    name_or_id_ls = given_id + given_name
+                                if 'Id' in g[1]:
+                                    given_id = g[1]['Id']
+                                else:
+                                    given_id = ''
+                                if 'Name' in g[1]:
+                                    given_name = g[1]['Name']
+                                else:
+                                    given_name = ''
+                                if given_name and given_id:
+                                    name_or_id_w = given_id + '-' + given_name
+                                else:
+                                    name_or_id_w = given_id + given_name
+                                print(name_or_id_ls, '->', name_or_id_w + '; ', end="")
+                            print()
+
+            print()
+
+    gv = GraphVisualizer()
+    production_number = 'test_nr'
+    mission_name = 'test_mission'
+    red_ones = []
+    red_ones.append(all_matches[28]['matches'][0][0]['w_node'])
+    for child in all_matches[28]['matches'][0][0]['children'][0][0]:
+        red_ones.append(child[1])
+
+    for production, nr in zip(all_matches, range(len(all_matches))):
+        for match, nr2 in zip(production['matches'], range(len(production['matches']))):
+            red_ones = []
+            for sheaf in match:
+                red_ones.append(sheaf['w_node'])
+                if 'children' in sheaf:
+                    for child in sheaf['children']:
+                        for childchild in child:
+                            if len(childchild) > 0:
+                                red_ones.append(childchild[0][1])
+                        gv.visualise({"Locations": world}, world=True, emph_nodes=red_ones).render(format='png', filename=f'match_{nr2:03d}',
+                                              directory=f'../visualisation/out/matches/{nr:03d}_{production["title"].split(" / ")[0].replace("’", "")}', cleanup=True)
+
+
+
+
+    # for a in all_matches:
+    #     print(a['title'].split(" / ")[0])
+    #     for c in a['matches']:
+    #         errors = []
+    #         for d in c:
+    #             id_or_name = 'Id' if 'Id' in d['ls_node'] else 'Name' if 'Name' in d['ls_node'] else None
+    #             print('    ', str(d['ls_node'][id_or_name])[0:20], ' -> ', str(d['w_node']['Name'])[0:20], end=', ')
+    #             if 'ls_node' not in d or 'w_node' not in d or not fit(d['ls_node'], d['w_node']):
+    #                 print('XXX', end='!')
+    #                 errors.append(d)
+    #         print()
+    #         if errors:
+    #             # print(f"Ten zestaw nie pasuje: {c}, bo {errors}")
+    #             del c
+
+    return all_matches
+
+
+#jeszcze starsza wersja, która bierze kombinację bez powtórzeń wszystkich wierzchołków
+def what_to_do_top_down(world: list, character: str, production_list: list) -> list:
+    initial_paths = breadcrumb_pointer(world, name=character, layer='Characters')
+    world_all_locations = []
+    for location in world:
+        world_all_locations.append(location)
+
+    world_main_location = initial_paths[0][-2]
+    matches = []
+
+
+    for prod in production_list:
+        ls_all_locations = []
+        for location in prod['LSide']['Locations']:
+            ls_all_locations.append(location)
+        ls_main_location = prod['LSide']['Locations'][0]
+        possible_locations = match(ls_all_locations, world_all_locations)
+        possible_locations_shorter1 = []
+        possible_locations_shorter2 = []
+        possible_locations_shorter3 = []
+
+        for possibility, nr in zip(possible_locations, range(len(possible_locations))):
+            fitting = True
+            for p1, p2 in possibility:
+                if p1 == ls_main_location and p2 != world_main_location:
+                    fitting = False
+                    break
+                if 'Name' in p1 and p1['Name'] != p2['Name']:
+                    fitting = False
+                    break
+                if p1 != ls_main_location and p2 == world_main_location:
+                    fitting = False
+            if fitting:
+                possible_locations_shorter1.append(possible_locations[nr])
+
+
+        for possibility, nr in zip(possible_locations_shorter1, range(len(possible_locations_shorter1))):
+            fitting = True
+            for p1, p2 in possibility:
+                if not fits(p1,p2):
+                    fitting = False
+            if fitting:
+                possible_locations_shorter2.append(possible_locations_shorter1[nr])
+
+        for possibility, nr in zip(possible_locations_shorter2, range(len(possible_locations_shorter2))):
+            fitting = True
+            for p1, p2 in possibility:
+                if 'Connections' not in p1 or p1['Connections'] == []:
+                    pass
+                elif 'Connections' not in p2 or p2['Connections'] == []:
+                    fitting = False
+                else:
+                    p2_conn = []
+                    for c in p2['Connections']:
+                        p2_conn.append(c['Destination'])
+                    for dest in p1['Connections']:
+                        for p1bis, p2bis in possibility:
+                            name_or_id = 'Name' if 'Name' in p1bis else 'Id' if 'Id' in p1bis else None
+                            if dest['Destination'] == p1bis[name_or_id]:
+                                if p2bis['Name'] not in p2_conn:
+                                    fitting = False
+            if fitting:
+                possible_locations_shorter3.append(possible_locations_shorter2[nr])
+
+
+
+        matches.append({"prod":prod,"possibilities":possible_locations_shorter3})
+    return matches
+
+# i jeszcze starsze próby:
+
+# def what_to_do_st(world: list, character: str, production_list: list) -> list:
+#     initial_paths = breadcrumb_pointer(world, name=character, layer='Characters')
+#     matches = []
+#     for prod in production_list:
+#         if fits(prod['LSide']['Locations'][0], initial_paths[0][-2]):
+#             matched_others = match(prod['LSide']['Locations'][1:],world[1:])
+#             if matched_others:
+#                 for m in matched_others:
+#                     for t in (prod['LSide']['Locations'][0], initial_paths[0][-2]) + m:
+#                         if 'Connections' in t[0] and 'Connections' in t[1]:
+#                             if len(t[0]['Connections']) > 0 and len(t[1]['Connections']) > 0:
+#                                 for destination in t[0]['Connections']:
+#                                     pass
+#
+#
+#                     matches.append((prod)
+#
+#                 = [(prod['LSide']['Locations'][0],initial_paths[0][-2])] + match(prod['LSide']['Locations'][1:],world[1:])
+#             if match(prod['LSide']['Locations'][1:],world[1:]):
+#                 matches.append(prod)
+#
+#     return matches
+
+# def what_to_do_st2(world: list, character: str, production_list: list) -> list:
+#     initial_paths = breadcrumb_pointer(world, name=character, layer='Characters')
+#     world_main_location = initial_paths[0][-2]
+#     matches = []
+#     for prod in production_list:
+#         ls_main_location = prod['LSide']['Locations'][0]
+#         if len(prod['LSide']['Locations']) > 1:
+#             ls_other_locations = prod['LSide']['Locations'][1:]
+#
+#         ls_connections = []
+#         world_connections = []
+#         if 'Connections' in ls_main_location:
+#             for dest in ls_main_location['Connections']:
+#                 ls_connections.append(dest['Destination'])
+#             if 'Connections' in world_main_location:
+#                 for dest in world_main_location['Connections']:
+#                     world_connections.append(breadcrumb_pointer(world, name = dest['Destination'])[-1])
+#             else:
+#                 break
+#             possible_connections = match(ls_connections, world_connections)
+#             possible_locations = []
+#             for possibility, nr in zip(possible_connections, range(len(possible_connections))):
+#                 locations_for_possibility = []
+#                 locations_for_possibility.append(world_main_location)
+#                 for other in ls_other_locations:
+#                     if 'Id' in other:
+#                         for dest, loc in possibility:
+#                             if other['Id'] == dest:
+#                                 locations_for_possibility.append(loc)
+#                     else:
+#                         locations_for_possibility.append(breadcrumb_pointer(world, name = other['Name'])[-1])
+#                 possible_locations.append(locations_for_possibility)
+#
+#             checked_locations = []
+#             for locations_list, nr1 in zip(possible_locations, range(len(possible_locations))):
+#                 fitting = True
+#                 for location, nr2 in zip(locations_list, range(len(locations_list))):
+#                     if not fits(prod['LSide']['Locations'][nr2], location):
+#                         fitting = False
+#                 if fitting:
+#                     checked_locations.append(locations_list)
+#         else:
+#         matches.append((prod, checked_locations))
+
+
+
+        #
+        # else:
+        #     pass
+        #
+        # if len(prod['LSide']['Locations']) > 1:
+        #     ls_other_locations = prod['LSide']['Locations'][1:]
+        # else:
+        #     ls_other_locations = None
+        # if fits(ls_main_location, world_main_location):
+        #     if 'Connections' in ls_main_location and ls_main_location['Connections']:
+        #         for dest in ls_main_location['Connections']:
+        #             if
+        #
+        #
+        #
+        #
+        #
+        #
+        #
+        #     matched_others = match(prod['LSide']['Locations'][1:],world[1:])
+        #     if matched_others:
+        #         for m in matched_others:
+        #             for t in (prod['LSide']['Locations'][0], initial_paths[0][-2]) + m:
+        #                 if 'Connections' in t[0] and 'Connections' in t[1]:
+        #                     if len(t[0]['Connections']) > 0 and len(t[1]['Connections']) > 0:
+        #                         for destination in t[0]['Connections']:
+        #                             pass
+        #
+        #
+        #             matches.append((prod)
+        #
+        #         = [(prod['LSide']['Locations'][0],initial_paths[0][-2])] + match(prod['LSide']['Locations'][1:],world[1:])
+        #     if match(prod['LSide']['Locations'][1:],world[1:]):
+        #         matches.append(prod)
+
+    # return matches
+
+
+# def what_to_do_st3(world: list, character: str, production_list: list) -> list:
+#     initial_paths = breadcrumb_pointer(world, name=character, layer='Characters')
+#     world_main_location = initial_paths[0][-2]
+#     matches = []
+#     for prod in production_list:
+#         ls_main_location = prod['LSide']['Locations'][0]
+#         if fits(ls_main_location, world_main_location):
+#             if len(prod['LSide']['Locations']) > 1:
+#                 ls_other_locations = prod['LSide']['Locations'][1:]
+#                 if len(world) - 1 < len(ls_other_locations):
+#                     break
+#                 possible_locations = match(ls_other_locations, world[])
+#                 fitting = True
+#                 for possibility in possible_locations:
+#                     for t in possibility:
+#                         if not fits(t[0], t[1]):
+#                             fitting = False
+#                     if fitting:
+#                         matches.append((prod, [(ls_main_location, world_main_location)] + [possibility]))
+#             else:
+#                 matches.append((prod, [(ls_main_location, world_main_location)]))
+#
+#     return matches
+
+
+#
+# if fits(ls_main_location, world_main_location):
+#
+#
+#     if len(prod['LSide']['Locations']) > 1:
+#         ls_other_locations = prod['LSide']['Locations'][1:]
+#         if len(world) - 1 < len(ls_other_locations):
+#             break
+#         possible_locations = match(ls_other_locations, world[])
+#         fitting = True
+#         for possibility in possible_locations:
+#             for t in possibility:
+#                 if not fits(t[0], t[1]):
+#                     fitting = False
+#             if fitting:
+#                 matches.append((prod, [(ls_main_location, world_main_location)] + [possibility]))
+#     else:
+#         matches.append((prod, [(ls_main_location, world_main_location)]))

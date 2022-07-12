@@ -1,0 +1,232 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://www.ztg.fais.uj.edu.pl/",
+    "title": "StoryGraph",
+    "description": "JSON Schema for productions.",
+    "type": "array",
+    "definitions": {
+        "node": {
+            "type": "object",
+            "anyOf": [
+                {"required": ["Name"]},
+                {"required": ["Id"]}
+            ],
+            "properties": {
+                "Name": {"type": "string"}, 
+                "Id": {"type": "string"},
+                "Comment": {"type": "string"},
+                "IsObject": {"type": "boolean"},
+                "Characters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/node"
+                    }
+                },
+                "Items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/node"
+                    }
+                },
+                "Narration": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/node"
+                    }
+                },
+                "Connections": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Destination": {"type": "string"},
+                            "Attributes": {
+                                "type": "object",
+                                "patternProperties": {
+                                    "^.*$": {
+                                        "anyOf": [
+                                            {"type": "string"},
+                                            {"type": "boolean"},
+                                            {"type": "number"},
+                                            {"type": "null"}
+                                        ]
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": ["Destination"]
+                    }
+                },
+                "Attributes": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^.*$": {
+                        "anyOf": [
+                            {"type": "string"},
+                            {"type": "boolean"},
+                            {"type": "number"},
+                            {"type": "null"}
+                        ]
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "items": {
+        "type": "object",
+        "properties": {
+            "Title": {"type": "string"},
+            "TitleGeneric": {"type": "string"},
+            "Description": {"type": "string"},
+            "Override": {"type": "integer", "enum": [0, 1, 2]},
+            "Comment": {"type": "string"},
+            "LSide": {
+                "type": "object",
+                "properties": {
+                    "Locations": {
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {"$ref": "#/definitions/node"}
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "required": ["Locations"]
+            },
+            "RSide": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+            },
+            "Preconditions": {
+                "type": "array",
+                "items": {
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "Cond": {"type": "string"}
+                            },
+                            "additionalProperties": false,
+                            "required": ["Cond"]
+                        }, 
+                        {
+                            "type": "object",
+                            "required": ["Count"],
+                            "anyOf": [
+                                {"required": ["Min"]},
+                                {"required": ["Max"]},
+                                {"required": ["Min", "Max"]}
+                            ],
+                            "properties": {
+                                "Count": {"type": "string"},
+                                "Min": {"type": "integer"},
+                                "Max": {"type": "integer"}
+                            },
+                            "additionalProperties": false
+                        }
+                    ]
+                }
+            },
+            "Instructions": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "Op": {"type": "string", "enum": ["create", "delete", "move", "set", "unset", "add", "mul", "winning", "copy"]},
+                        "In": {"type": "string"},
+                        "To": {"type": "string"},
+                        "Attribute": {"type": "string"},
+                        "Expr": {"type": "string"},
+                        "Value": {
+                            "anyOf": [
+                                {"type": "string"},
+                                {"type": "boolean"},
+                                {"type": "number"},
+                                {"type": "null"}
+                            ]    
+                        },                    
+                        "CharactersLimiter": {"type": "string", "enum": ["prohibit", "move", "delete"]},
+                        "ItemsLimiter": {"type": "string", "enum": ["prohibit", "move", "delete"]},
+                        "ChildrenLimiter": {"type": "string", "enum": ["prohibit", "move", "delete"]},
+                        "NarrationLimiter": {"type": "string", "enum": ["prohibit", "move", "delete"]},
+                        "Limit": {"type": "integer"},
+                        "Count": {"type": "integer"},
+                        "Sheaf": {"type": "object"}
+                    },
+                    "allOf": [
+                        {
+                            "if": {"properties": {"Op": { "enum": ["set"] }}},
+                            "then": { 
+                                "required": ["Attribute"],
+                                "anyOf": [
+                                    {"required": ["Value"]},
+                                    {"required": ["Expr"]}
+                                ]
+                             }
+                        },
+                        {
+                            "if": {"properties": {"Op": { "enum": ["add"] }}},
+                            "then": { "required": ["Attribute", "Value"] }
+                        },
+                        {
+                            "if": {"properties": {"Op": { "enum": ["mul"] }}},
+                            "then": { "required": ["Attribute", "Value"] }
+                        },
+                        {
+                            "if": {"properties": {"Op": { "enum": ["delete"] }}},
+                            "then": { 
+                                "anyOf": [
+                                    {"required": ["Node"]},
+                                    {"required": ["Nodes"]}
+                                ],
+                                "properties": {
+                                    "Node": {"type": "string"},
+                                    "Nodes": {"type": "string"}
+                                }
+                            }
+                        },
+                        {
+                            "if": {"properties": {"Op": { "enum": ["create"] }}},
+                            "then": { 
+                                "required": ["In"],
+                                "anyOf": [
+                                    {"required": ["Node"]},
+                                    {"required": ["Sheaf"]}
+                                ],
+                                "properties": {
+                                    "Node": {"$ref": "#/definitions/node"}
+                                }
+                            }
+                        },
+                        {
+                            "if": {"properties": {"Op": { "enum": ["move"] }}},
+                            "then": { 
+                                "required": ["To"],
+                                "anyOf": [
+                                    {"required": ["Node"]},
+                                    {"required": ["Nodes"]}
+                                ],
+                                "properties": {
+                                    "Node": {"type": "string"},
+                                    "Nodes": {"type": "string"}
+                                }
+                            }
+                        }
+                    ]
+                },
+                "additionalProperties": false,
+                "required": ["Op"]
+            }
+        },
+        "additionalProperties": false,
+        "required": ["Title", "TitleGeneric", "Description", "LSide", "RSide", "Instructions", "Override"]
+    }
+}

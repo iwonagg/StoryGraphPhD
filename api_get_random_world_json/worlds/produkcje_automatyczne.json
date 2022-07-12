@@ -1,0 +1,599 @@
+[
+  {
+    "Title": "Turning a dead wolf into a pelt / Zamiana martwego wilka w skórę",
+    "TitleGeneric": "Turning a dead character into an item / Zamiana martwej postaci w przedmiot",
+    "Description": "Martwy wilk znika a na jego miejscu pojawia się jego skóra.",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Characters": [
+            {
+              "Name": "Wolf",
+              "Items": [],
+              "Attributes": {
+                "IsDead": true
+              }
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "Wolf_pelt",
+          "Attributes": {
+            "Value": 20
+          }
+        }
+      },
+      {
+        "Op": "delete",
+        "Nodes": "Wolf"
+      }
+    ]
+  },
+  {
+    "Title": "Turning a dead sheep into a poisoned mutton chop / Zamiana martwej owcy w zatrute mięso",
+    "TitleGeneric": "Turning a dead sheep into a pelt and mutton chop / Zamiana martwej owcy w skórę i mięso",
+    "Description": "Martwa owca znika a na jej miejscu pojawia się zatrute mięso.",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Characters": [
+            {
+              "Name": "Sheep",
+              "Items": [],
+              "Attributes": {
+                "IsDead": true,
+                "IsIll": true
+              }
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "Sheep_pelt",
+          "Attributes": {
+            "Value": 10
+          }
+        }
+      },
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "Mutton_chop",
+          "Attributes": {
+            "Value": 1,
+            "NutritionalValue": 3,
+            "IsRotten": true
+          }
+        }
+      },
+      {
+        "Op": "delete",
+        "Nodes": "Sheep"
+      }
+    ]
+},
+  {
+    "Title": "Turning a dead sheep into a pelt and mutton chop / Zamiana martwej owcy w skórę i mięso",
+    "TitleGeneric": "Turning a dead character into an item / Zamiana martwej postaci w przedmiot",
+    "Description": "Martwa owca znika a na jej miejscu pojawia się skóra i mięso.",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Characters": [
+            {
+              "Name": "Sheep",
+              "Items": [],
+              "Attributes": {
+                "IsDead": true
+              }
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "Sheep_pelt",
+          "Attributes": {
+            "Value": 10
+          }
+        }
+      },
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "Mutton_chop",
+          "Attributes": {
+            "Value": 5,
+            "NutritionalValue": 10
+          }
+        }
+      },
+      {
+        "Op": "delete",
+        "Nodes": "Sheep"
+      }
+    ]
+  },
+  {
+    "Title": "Turning a dead spider into a spider leg / Zamiana martwego pająka w nogę pająka",
+    "TitleGeneric": "Turning a dead character into an item / Zamiana martwej postaci w przedmiot",
+    "Description": "Martwy pająk znika, a w jego miejscu pojawia się noga pająka.",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Characters": [
+            {
+              "Name": "Spider",
+              "Items": [],
+              "Attributes": {
+                "IsDead": true
+              }
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "Spider_leg",
+          "Attributes": {
+            "Value": 100
+          }
+        }
+      },
+      {
+        "Op": "delete",
+        "Nodes": "Spider"
+      }
+    ]
+  },
+  {
+    "Title": "Turning a dead dragon into valuables / Zamiana martwego smoka na łuski i ząb",
+    "TitleGeneric": "Turning a dead character into an item / Zamiana martwej postaci w przedmiot",
+    "Description": "Martwy smok zamienia się w cenną skórę i smoczy ząb.",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Characters": [
+            {
+              "Name": "Dragon",
+              "Items": [],
+              "Attributes": {
+                "IsDead": true
+              }
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "delete",
+        "Nodes": "Dragon"
+      },
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "Dragon_tooth",
+          "Attributes": {
+            "Value": 2000
+          }
+        }
+      },
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "Dragon_scales",
+          "Attributes": {
+            "Value": 2000
+          }
+        }
+      }
+    ]
+  }, 
+  {
+    "Title": "Turning a dead rat into a rat tail / Zamiana martwego szczura w ogon",
+    "TitleGeneric": "Turning a dead character into an item / Zamiana martwej postaci w przedmiot",
+    "Description": "Martwy szczur znika a na jego miejscu pojawia się ogon szczura.",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Characters": [
+            {
+              "Name": "Rat",
+              "Items": [],
+              "Attributes": {
+                "IsDead": true
+              }
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "Rat_tail"
+        }
+      },
+      {
+        "Op": "delete",
+        "Nodes": "Rat"
+      }
+    ]
+  },
+  {
+    "Title": "Turning a dead horse into horse bristles / Zamiana martwego konia w końskie włosie",
+    "TitleGeneric": "Turning a dead character into an item / Zamiana martwej postaci w przedmiot",
+    "Description": "Martwy koń znika a na jego miejscu pojawiaja się końskie włosie.",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Characters": [
+            {
+              "Name": "Horse",
+              "Items": [],
+              "Attributes": {
+                "IsDead": true
+              }
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "Horse_bristles",
+          "Attributes": {
+              "DiscountGroup": "Fiddle_stick",
+              "DiscountRate": 0.5
+          }
+        }
+      },
+      {
+        "Op": "delete",
+        "Nodes": "Horse"
+      }
+    ]
+  },
+  {
+    "Title": "Turning a dead troll into a troll tooth / Zamiana martwego trolla w ząb",
+    "TitleGeneric": "Turning a dead character into an item / Zamiana martwej postaci w przedmiot",
+    "Description": "Martwy troll zamienia się w ząb trolla.",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Name": "Cave",
+          "Characters": [
+            {
+              "Name": "Troll",
+              "Attributes": {
+                "IsDead": true
+              }
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Cave/Items",
+        "Sheaf": {
+          "Name": "Troll_tooth",
+          "Attributes": {
+            "Value": 15
+          }
+        }
+      },
+      {
+        "Op": "delete",
+        "Nodes": "Troll"
+      }
+    ]
+  },
+  {
+    "Title": "Turning a dead monkey into a monkey hand / Zamiana martwej małpy w małpią rączkę",
+    "TitleGeneric": "Turning a dead character into an item / Zamiana martwej postaci w przedmiot",
+    "Description": "Martwa małpa znika na jej miejscu pojawia się małpia rączka.",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Name": "Tavern_backroom",
+          "Characters": [
+            {
+              "Name": "Monkey",
+              "Items": [],
+              "Attributes": {
+                "IsDead": true
+              }
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "create",
+        "In": "Tavern_backroom/Items",
+        "Sheaf": {
+          "Name": "Monkey_hand",
+          "Attributes": {}
+        }
+      },
+      {
+        "Op": "delete",
+        "Nodes": "Monkey"
+      }
+    ]
+  },   
+  {
+    "Title": "Turning a dead character into an corpse / Zamiana martwej postaci w zwłoki",
+    "TitleGeneric": "Turning a dead character into an item / Zamiana martwej postaci w przedmiot",
+    "Description": "Martwa postać («Dead_person») znika a na jej miejscu pojawiają się zwłoki.",
+    "Override": 1,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Characters": [
+            {
+              "Id": "Dead_person",
+              "Items": [],
+              "Attributes": {
+                "IsDead": true
+              }
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "delete",
+        "Nodes": "Dead_person"
+      },
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "Corpse"
+        }
+      }
+    ]
+  },
+  {
+    "Title": "Turning a dead character into an item / Zamiana martwej postaci w przedmiot",
+    "TitleGeneric": "",
+    "Description": "Martwa postać («Dead_person») znika a na jej miejscu pojawiają się jej zwłoki.",
+    "Comment": "Problem tworzenia obiektów (tu: węzeł) w produkcji generycznej. Użyto „?”.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Characters": [
+            {
+              "Id": "Dead_person",
+              "Items": [],
+              "Attributes": {
+                "IsDead": true
+              }
+            }
+          ],
+          "Items": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "delete",
+        "Nodes": "Dead_person"
+      },
+      {
+        "Op": "create",
+        "In": "Somewhere/Items",
+        "Sheaf": {
+          "Name": "?"
+        }
+      }
+    ]
+  },
+  {
+    "Title": "Character’s death from exhaustion  / Śmierć bohatera z wyczerpania",
+    "TitleGeneric": "Character’s death / Śmierć bohatera",
+    "Description": "«Hero» umiera z wyczerpania.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Hero",
+              "Attributes": {
+                  "HP": null
+              },
+              "Characters": [],
+              "Items": []
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [
+        {
+            "Cond": "Hero.HP <= 0"
+          }
+    ],
+    "Instructions": [
+      {
+        "Op": "set",
+        "Attribute": "Hero.IsDead",
+        "Value": true
+      },
+      {
+        "Op": "move",
+        "Nodes": "Hero/Items/*",
+        "To": "Somewhere/Items"
+      }
+    ]
+  },
+  {
+    "Title": "Deleting narration node with 0 level / Usuwanie węzłów narracyjnych z poziomem 0",
+    "TitleGeneric": "",
+    "Description": "Węzeł «Used_node» już stracił użyteczność, czyścimy graf usuwając zużyte węzły.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Id": "Bohater_A",
+              "Attributes": {
+              },
+              "Narration": [
+                {
+                    "Id": "Used_node",
+                    "Attributes": {
+                      "Level": 0
+                    }  
+                }
+              ]
+            }
+          ],
+          "Items": [],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [
+      
+    ],
+    "Instructions": [
+      {
+        "Op": "delete",
+        "Nodes": "Used_node"
+      }
+    ]
+  },
+  {
+    "Title": "Shepard death after sheep death - test / Uśmiercanie pasterza po śmierci owcy",
+    "TitleGeneric": "Character’s death / Śmierć bohatera",
+    "Description": "Testowa.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Id": "Somewhere",
+          "Attributes": {},
+          "Characters": [
+            {
+              "Name": "Shepherd",
+              "Attributes": {
+              },
+              "Narration": [
+              ]
+            }
+          ],
+          "Items": [
+            {
+              "Name": "Mutton_chop",
+              "Attributes": {
+              }
+            }
+
+          ],
+          "Connections": []
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [
+      
+    ],
+    "Instructions": [
+      {
+        "Op": "set",
+        "Attribute": "Shepherd.IsDead",
+        "Value": true
+      },
+      {
+        "Op": "move",
+        "Nodes": "Shepherd/Items/*",
+        "To": "Somewhere/Items"
+      }
+    ]
+  }
+]

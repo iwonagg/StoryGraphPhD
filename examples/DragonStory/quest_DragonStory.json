@@ -1,0 +1,171 @@
+[
+    {
+    "Title": "Drunkard gets thrown out of Inn / Wyrzucenie awanturnika z karczmy",
+    "TitleGeneric": "Fight ending with character’s escape / Walka zakończona ucieczką uczestnika",
+    "Description": "W karczmie awanturuje się pijak. Wzbudza to irytację bohatera, który po ojcowsku daje mu w ucho i zaskoczony pijak wybiega na zewnątrz. Karczmarz wzdycha z ulgą i obdarza bohatera wdzięcznym spojrzeniem.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Name": "Inn",
+          "Characters": [
+            {
+              "Name": "Main_hero",
+              "IsObject": true,
+              "Attributes": {}
+            },
+            {
+              "Name": "Innkeeper",
+              "Items": [
+                {
+                  "Name": "Poison",
+                  "Attributes": {}
+                }
+
+              ]
+            },
+            {
+              "Name": "Drunkard",
+              "Attributes": {
+                "IsTroublemaker": true
+              },
+              "Items": []
+            }
+          ],
+          "Items": [],
+          "Connections": [
+            {
+              "Destination": "Road"
+            }
+          ]
+        },
+        {
+          "Name": "Road"
+          
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Drunkard/Items/*",
+        "To": "Inn/Items"
+      },
+      {
+        "Op": "move",
+        "Nodes": "Drunkard",
+        "To": "Road/Characters"
+      },
+      {
+        "Op": "create",
+        "In": "Main_hero/Narration",
+        "Sheaf": {
+          "Name": "Innkeepers_gratitude",
+          "Attributes": {
+            "Knowledge": "Karczmarz jest Ci winien wdzięczność.",
+            "Level": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Title": "Obtaining poison / Zdobycie trucizny",
+    "TitleGeneric": "Item acquisition from another character / Przejęcie przedmiotu od innej postaci",
+    "Description": "Bohater i karczmarz znajdują się w karczmie. W dowód wdzięczności karczmarz przekazuje bohaterowi truciznę, co wyrównuje rachunki.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Name": "Inn",
+          "Characters": [
+            {
+              "Name": "Main_hero",
+              "IsObject": true,
+              "Narration": [
+                {
+                  "Name": "Innkeepers_gratitude",
+                  "Attributes": {
+                    "Level": null
+                  }
+                }
+              ],
+              "Items": []
+            },
+            {
+              "Name": "Innkeeper",
+              "Items": [
+                {
+                  "Name": "Poison"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "RSide": {},
+    "Preconditions": [
+      {
+        "Cond": "Innkeepers_gratitude.Level >= 1"
+      }
+    ],
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Poison",
+        "To": "Main_hero/Items"
+      },
+      {
+        "Op": "set",
+        "Attribute": "Innkeepers_gratitude.Level",
+        "Expr": "Innkeepers_gratitude.Level - 1"
+      }
+    ]
+  },
+  {
+    "Title": "Wizard receives a distress call from Main hero / Bohater wzywa czarodzieja na pomoc",
+    "TitleGeneric": "Teleportation / Teleportacja",
+    "Description": "Studnia w wiosce jest zatruta. Wezwany czarodziej przybywa z lokacji «Anywhere» do wioski, żeby uzdatnić studnię.",
+    "Comment": "Gdy będą gotowe diagramy sterujące NPC można będzie zamienić tą produkcję na „Wizard's location change after well poisoning”, czyli produkcję, której podniotem jest czarodziej a nie bohater.",
+    "Override": 0,
+    "LSide": {
+      "Locations": [
+        {
+          "Name": "Village",
+          "Characters": [
+            {
+              "Name": "Main_hero",
+              "IsObject": true
+            }
+          ],
+          "Items": [
+            {
+              "Name": "Well",
+              "Attributes": {
+                "IsPoison": true
+              }
+            }
+          ]
+        },
+        {
+          "Id": "Anywhere",
+          "Characters": [
+            {
+              "Name": "Wizard"
+            }
+          ]
+        }
+      ]
+    },
+    "RSide": {},
+    "Instructions": [
+      {
+        "Op": "move",
+        "Nodes": "Wizard",
+        "To": "Village/Characters"
+      }
+    ]
+  }
+]

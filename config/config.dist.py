@@ -1,0 +1,1 @@
+path_root = r'/mnt/d/Uniwersytet Jagielloński/StoryGraph - General/materiały fabularne'

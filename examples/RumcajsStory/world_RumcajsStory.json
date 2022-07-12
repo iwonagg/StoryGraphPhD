@@ -1,0 +1,162 @@
+[
+	{
+	  "Title": "World around Jiczyn with english names / Świat wokół Jiczyna z angielskimi nazwami",
+	  "TitleGeneric": "",
+	  "Description": "Świat, w którym może wydarzyć się misja Rumcajsa.",
+	  "Override": 0,
+	  "LSide": {
+		"Locations": [
+		{
+			"Name": "Cave",
+			"Connections": [ { "Destination": "M23" } ],
+			"Characters": [ { "Name": "Manka" } ]
+		}, {
+			"Name": "Jiczyn",
+			"Connections": [ { "Destination": "M31" } ],
+			"Characters": [
+				{ "Name": "Merchant" },
+				{ "Name": "Jeweler" }
+			]
+		}, {
+			"Id": "M11",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M12" },
+				{ "Destination": "M21" }
+			]
+		}, {
+			"Id": "M12",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M11" },
+				{ "Destination": "M13" },
+				{ "Destination": "M22" }
+			],
+			"Items": [ { "Name": "Brushwood" } ]
+		}, {
+			"Id": "M13",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M12" },
+				{ "Destination": "M14" },
+				{ "Destination": "M23" }
+			]
+		}, {
+			"Id": "M14",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M13" },
+				{ "Destination": "M24" }
+			],
+			"Items": [ { "Name": "Brushwood" } ]
+		}, {
+			"Id": "M21",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M11" },
+				{ "Destination": "M22" },
+				{ "Destination": "M31" }
+			]
+		}, {
+			"Id": "M22",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M12" },
+				{ "Destination": "M21" },
+				{ "Destination": "M23" },
+				{ "Destination": "M32" }
+			]
+		}, {
+			"Id": "M23",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "Cave" },
+				{ "Destination": "M13" },
+				{ "Destination": "M22" },
+				{ "Destination": "M24" },
+				{ "Destination": "M33" }
+			],
+			"Characters": [ { "Name": "Rumcajs" } ],
+			"Items": [ { "Name": "Brushwood" } ]
+		}, {
+			"Id": "M24",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M14" },
+				{ "Destination": "M23" },
+				{ "Destination": "M34" }
+			]
+		}, {
+			"Id": "M31",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "Jiczyn" },
+				{ "Destination": "M21" },
+				{ "Destination": "M32" },
+				{ "Destination": "M41" }
+			]
+		}, {
+			"Id": "M32",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M22" },
+				{ "Destination": "M31" },
+				{ "Destination": "M33" },
+				{ "Destination": "M42" }
+			]
+		}, {
+			"Id": "M33",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M23" },
+				{ "Destination": "M32" },
+				{ "Destination": "M34" },
+				{ "Destination": "M43" }
+			]
+		}, {
+			"Id": "M34",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M24" },
+				{ "Destination": "M33" },
+				{ "Destination": "M44" }
+			],
+			"Items": [ { "Name": "Brushwood" } ]
+		}, {
+			"Id": "M41",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M31" },
+				{ "Destination": "M42" }
+			]
+		}, {
+			"Id": "M42",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M32" },
+				{ "Destination": "M41" },
+				{ "Destination": "M43" }
+			]
+		}, {
+			"Id": "M43",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M33" },
+				{ "Destination": "M42" },
+				{ "Destination": "M44" }
+			]
+		}, {
+			"Id": "M44",
+			"Name": "Forest",
+			"Connections": [
+				{ "Destination": "M34" },
+				{ "Destination": "M43" }
+			],
+			"Items": [ { "Name": "Brushwood" } ]
+		}
+	]
+},
+"RSide": {},
+"Instructions": []
+}
+]

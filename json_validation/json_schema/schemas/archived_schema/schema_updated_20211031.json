@@ -1,0 +1,230 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://www.ztg.fais.uj.edu.pl/",
+    "title": "StoryGraph",
+    "description": "JSON Schema for productions.",
+    "type": "array",
+    "definitions": {
+        "node": {
+            "type": "object",
+            "anyOf": [
+                {"required": ["Name"]},
+                {"required": ["Id"]}
+            ],
+            "properties": {
+                "Name": {"type": "string", "enum": ["Group", "Main_hero", "Bandit", "Common_man", "Common_woman", "Passerby", "Drunkard", "Innkeeper", "Innkeeper_assistant", "Daughter", "Miss", "Friend", "Lawyer", "Lumberjack", "Peasant", "Merchant", "Merchant_respected", "Merchant_shady", "Merchant_well_known", "Prison_governor", "Prison_guard", "Prisoner", "Shepherd", "Ship_captain", "Ship_guard", "Traveler", "Wizard", "Dragon", "Horse", "Sheep", "Wolf", "Alcohol", "Axe", "Beer_mug", "Coin", "Compass", "Crops", "Documents", "Dragon_egg", "Dragon_tooth", "Egg", "Elixir", "File", "Herbs", "Keys", "Knife", "Mutton_chop", "Picklock", "Saw", "Skin", "Stone", "Sword", "Torch", "Wanted_notice", "Advertising_column", "Ladder", "Chest", "Well", "Cave", "Dragons_lair", "Field", "Forest", "Inn", "Island", "Lumberjacks_Hut", "Market", "Pasture", "Peasants_hut", "Port", "Prison", "Road","Cooper", "Shepherds_hideout", "Ship", "Tavern", "Town_hall", "Village", "Wizards_hut", "Barn", "Ziutek", "Pirate", "Troll", "Bag", "Boat", "Letter", "Priceless_argentinian_cactus", "Treasure", "Self_conduct", "Ship", "Wolf_pelt", "Harbor", "Bottle_with_alcohol", "Strange_piece_of_metal", "Playing_cards", "Pouch", "Glejt", "Anywhere", "BohaterA", "BohaterB", "Clerk", "Mutton_chop_with_poison_herbs", "Poison", "Money", "Theft_agreement", "Outside_barn", "Barrel", "Wine", "Casket", "Plug","Carrot", "Gold", "Bandits", "Prisoner_transport", "OverseasLand", "Sheep_pelt",       
+                                                  "Napad_bandytow", "PirateQuestStartActive", "PirateQuestBoatSubQuestActive", "PirateQuestTreasureSubQuestActive", "HelpOnTheFieldsQuest","Treasure_rumor",  "Knowledge_about_Ziutek","Lawful_guard_Marian", "Knowledge_about_wanted_friend", "Ziutek_gratitude", "Lost_friend", "Bandits_relations","Gratitude_to_bandits", "Bohater_używa_sprytu_/_sztuczek_podczas_gry,_będąc_niezauważonym", "Cooper_disguise", "Bohater_zostaje_zatrudniony_przez_karczmarza", "Unexpected_revenge", "Disguised_as_cooper", "Wiedza_o_glejcie_i_haraczu", "ClerkGivesQuest", "WaterPoisonedKnowledge", "DragonEggSecretQuest", "ZiutekSacrifice", "InnkeeperAssistantLoseQuest", "TravelerLoseQuest", "PeasantLoseQuest", "MakaoGame", "ShepherdHostility", "FatalMistakeQuest", "DebtToABandit", "KnowledgeAboutDebt" , "WardOffPirates", "IsCaptain", "Merchant_shady_townhall_quest", "Help_shepard_task", "Talk_with_shepard", "Look_into_the_barn_quest", "StealShipQuest", "InnkeepersGratitude", "Traveler_lose_quest", "Hammer", "Ship_ticket", "Broom", "Map", "Dragon_Scales", "Merchants_Son", "Bribe_Expectations", "Safe_conduct", "Party", "Guard", "Clerk_gives_quest", "Hero_becomes_inn_employee", "Respect", "Innkeepers_gratitude", "Poisoned_well_treatment", "Dragons_scales", "Dragons_tooth", "Knowledge_about_killing_lumberjack", "Knowledge_about_safe_conduct_and_tribute", "Is_friend_to_main_hero", "Hero_successfully_cheats_at_cards", "Lumberjacks_gratitude", "Shepherd_hostility", "Lumberjacks_hatred", "Pirate_quest_treasure_sub_quest_active", "Deadly_bandit_attack", "Ziutek_sacrifice", "Bring_compass", "Merchants_son", "Pirate_quest_treasure_lost_parrot", "Fatal_mistake_quest", "Help_shepherd_task", "Feared_of_bandits", "Help_on_the_fields_quest", "Makao_game", "Pirates", "Knowledge_about_distracting_bandits", "Ward_off_pirates", "Bribe_expectations", "Innkeeper_assistant_lose_quest", "Pirate_quest_start_active", "Is_captain", "Has_mess_in_store", "Sword_of_lumberjack", "Knowledge_from_letter", "Pirate_quest_boat_sub_quest_active", "Talk_with_shepherd", "Knowledge_about_death_of_lumberjack_and_prison_governors_daughter", "Signed_theft_agreement", "Peasant_lose_quest", "Merchant_shady_town_hall_quest", "Steal_ship_quest", "Parrot", "Ship_crew_poisoned", "Knowledge_about_debt", "Dragon_egg_secret_quest", "Debt_to_a_bandit"]}, 
+                "Id": {"type": "string"},
+                "Comment": {"type": "string"},
+                "Characters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/node"
+                    }
+                },
+                "Items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/node"
+                    }
+                },
+                "Narration": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/node"
+                    }
+                },
+                "Connections": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Destination": {"type": "string"},
+                            "Attributes": {
+                                "type": "object",
+                                "patternProperties": {
+                                    "^.*$": {
+                                    "anyOf": [
+                                        {"type": "string"},
+                                        {"type": "boolean"},
+                                        {"type": "integer"},
+                                        {"type": "number"},
+                                        {"type": "null"}
+                                    ]
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": ["Destination"]
+                    }
+                },
+                "Attributes": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^.*$": {
+                        "anyOf": [
+                            {"type": "string"},
+                            {"type": "boolean"},
+                            {"type": "integer"},
+                            {"type": "number"},
+                            {"type": "null"}
+                        ]
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "items": {
+        "type": "object",
+        "properties": {
+            "Title": {"type": "string"},
+            "Title_Generic": {"type": "string"},
+            "Description": {"type": "string"},
+            "Comment": {"type": "string"},
+            "L_Side": {
+                "type": "object",
+                "properties": {
+                    "Locations": {
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {"$ref": "#/definitions/node"}
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "required": ["Locations"]
+            },
+            "R_Side": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+            },
+            "Preconditions": {
+                "type": "array",
+                "items": {
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "cond": {"type": "string"}
+                            },
+                            "additionalProperties": false,
+                            "required": ["cond"]
+                        }, 
+                        {
+                            "type": "object",
+                            "required": ["count"],
+                            "anyOf": [
+                                {"required": ["min"]},
+                                {"required": ["max"]},
+                                {"required": ["min", "max"]}
+                            ],
+                            "properties": {
+                                "count": {"type": "string"},
+                                "min": {"type": "number"},
+                                "max": {"type": "number"}
+                            },
+                            "additionalProperties": false
+                        }
+                    ]
+                }
+            },
+            "Instructions": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "op": {"type": "string", "enum": ["create", "delete", "move", "set", "unset", "add", "mul"]},
+                        "in": {"type": "string"},
+                        "to": {"type": "string"},
+                        "attribute": {"type": "string"},
+                        "expr": {"type": "string"},
+                        "value": {
+                            "anyOf": [
+                                {"type": "string"},
+                                {"type": "boolean"},
+                                {"type": "integer"},
+                                {"type": "number"},
+                                {"type": "null"}
+                            ]    
+                        },                    
+                        "characters": {"type": "string", "enum": ["prohibit", "move"]},
+                        "items": {"type": "string", "enum": ["prohibit", "move"]},
+                        "sheaf": {"type": "object"}
+                    },
+                    "allOf": [
+                        {
+                            "if": {"properties": {"op": { "enum": ["set"] }}},
+                            "then": { 
+                                "required": ["attribute"],
+                                "anyOf": [
+                                    {"required": ["value"]},
+                                    {"required": ["expr"]}
+                                ]
+                             }
+                        },
+                        {
+                            "if": {"properties": {"op": { "enum": ["add"] }}},
+                            "then": { "required": ["attribute", "value"] }
+                        },
+                        {
+                            "if": {"properties": {"op": { "enum": ["mul"] }}},
+                            "then": { "required": ["attribute", "value"] }
+                        },
+                        {
+                            "if": {"properties": {"op": { "enum": ["delete"] }}},
+                            "then": { 
+                                "anyOf": [
+                                    {"required": ["node"]},
+                                    {"required": ["nodes"]}
+                                ],
+                                "properties": {
+                                    "node": {"type": "string"},
+                                    "nodes": {"type": "string"}
+                                }
+                            }
+                        },
+                        {
+                            "if": {"properties": {"op": { "enum": ["create"] }}},
+                            "then": { 
+                                "required": ["in"],
+                                "anyOf": [
+                                    {"required": ["node"]},
+                                    {"required": ["sheaf"]}
+                                ],
+                                "properties": {
+                                    "node": {"$ref": "#/definitions/node"}
+                                }
+                            }
+                        },
+                        {
+                            "if": {"properties": {"op": { "enum": ["move"] }}},
+                            "then": { 
+                                "required": ["to"],
+                                "anyOf": [
+                                    {"required": ["node"]},
+                                    {"required": ["nodes"]}
+                                ],
+                                "properties": {
+                                    "node": {"type": "string"},
+                                    "nodes": {"type": "string"}
+                                }
+                            }
+                        }
+                    ]
+                },
+                "additionalProperties": false,
+                "required": ["op"]
+            }
+        },
+        "additionalProperties": false,
+        "required": ["Title", "Title_Generic", "Description", "L_Side", "R_Side", "Instructions"]
+    }
+}

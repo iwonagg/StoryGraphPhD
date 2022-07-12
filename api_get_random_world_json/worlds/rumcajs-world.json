@@ -1,0 +1,162 @@
+[
+	{
+	  "Title": "World_around_Jiczyn / Świat wokół Jiczyna",
+	  "TitleGeneric": "",
+	  "Description": "Świat, w którym może wydarzyć się misja Rumcajsa.",
+	  "Override": 0,
+	  "LSide": {
+		"Locations": [
+		{
+			"Name": "Jaskinia",
+			"Connections": [ { "Destination": "m23" } ],
+			"Characters": [ { "Name": "Hanka" } ]
+		}, {
+			"Name": "Jiczyn",
+			"Connections": [ { "Destination": "m31" } ],
+			"Characters": [
+				{ "Name": "Handlarz" },
+				{ "Name": "Jubiler" }
+			]
+		}, {
+			"Id": "m11",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m12" },
+				{ "Destination": "m21" }
+			]
+		}, {
+			"Id": "m12",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m11" },
+				{ "Destination": "m13" },
+				{ "Destination": "m22" }
+			],
+			"Items": [ { "Name": "Chrust" } ]
+		}, {
+			"Id": "m13",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m12" },
+				{ "Destination": "m14" },
+				{ "Destination": "m23" }
+			]
+		}, {
+			"Id": "m14",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m13" },
+				{ "Destination": "m24" }
+			],
+			"Items": [ { "Name": "Chrust" } ]
+		}, {
+			"Id": "m21",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m11" },
+				{ "Destination": "m22" },
+				{ "Destination": "m31" }
+			]
+		}, {
+			"Id": "m22",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m12" },
+				{ "Destination": "m21" },
+				{ "Destination": "m23" },
+				{ "Destination": "m32" }
+			]
+		}, {
+			"Id": "m23",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "Jaskinia" },
+				{ "Destination": "m13" },
+				{ "Destination": "m22" },
+				{ "Destination": "m24" },
+				{ "Destination": "m33" }
+			],
+			"Characters": [ { "Name": "Rumcajs" } ],
+			"Items": [ { "Name": "Chrust" } ]
+		}, {
+			"Id": "m24",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m14" },
+				{ "Destination": "m23" },
+				{ "Destination": "m34" }
+			]
+		}, {
+			"Id": "m31",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "Jiczyn" },
+				{ "Destination": "m21" },
+				{ "Destination": "m32" },
+				{ "Destination": "m41" }
+			]
+		}, {
+			"Id": "m32",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m22" },
+				{ "Destination": "m31" },
+				{ "Destination": "m33" },
+				{ "Destination": "m42" }
+			]
+		}, {
+			"Id": "m33",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m23" },
+				{ "Destination": "m32" },
+				{ "Destination": "m34" },
+				{ "Destination": "m43" }
+			]
+		}, {
+			"Id": "m34",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m24" },
+				{ "Destination": "m33" },
+				{ "Destination": "m44" }
+			],
+			"Items": [ { "Name": "Chrust" } ]
+		}, {
+			"Id": "m41",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m31" },
+				{ "Destination": "m42" }
+			]
+		}, {
+			"Id": "m42",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m32" },
+				{ "Destination": "m41" },
+				{ "Destination": "m43" }
+			]
+		}, {
+			"Id": "m43",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m33" },
+				{ "Destination": "m42" },
+				{ "Destination": "m44" }
+			]
+		}, {
+			"Id": "m44",
+			"Name": "Las",
+			"Connections": [
+				{ "Destination": "m34" },
+				{ "Destination": "m43" }
+			],
+			"Items": [ { "Name": "Chrust" } ]
+		}
+	]
+},
+"RSide": {},
+"Instructions": []
+}
+]

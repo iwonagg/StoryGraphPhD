@@ -1,0 +1,78 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://www.ztg.fais.uj.edu.pl/",
+    "title": "StoryGraph",
+    "description": "JSON Schema for productions.",
+    "definitions": {
+        "node": {
+            "type": "object",
+            "anyOf": [
+                {"required": ["Name"]},
+                {"required": ["Id"]}
+            ],
+            "properties": {
+                "Name": {"type": "string"},
+                "Comment": {"type": "string"},
+                "Characters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/node"
+                    }
+                },
+                "Items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/node"
+                    }
+                },
+                "Narration": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/node"
+                    }
+                },
+                "Connections": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Destination": {"type": "string"},
+                            "Attributes": {
+                                "type": "object",
+                                "patternProperties": {
+                                    "^.*$": {
+                                        "anyOf": [
+                                            {"type": "string"},
+                                            {"type": "boolean"},
+                                            {"type": "number"},
+                                            {"type": "null"}
+                                        ]
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": ["Destination"]
+                    }
+                },
+                "Attributes": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^.*$": {
+                            "anyOf": [
+                                {"type": "string"},
+                                {"type": "boolean"},
+                                {"type": "number"}
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "type": "object",
+    "$ref": "#/definitions/node"
+}
