@@ -9,18 +9,30 @@ przedmiotów („Items”) oraz informacji fabularnych („Narration”).
 
 ## Co da się zrobić w tym projekcie?
 Zbiór skryptów w języku python dostępny w tym repozytorium pozwala na:
+- symulację rozgrywki: modyfikację wczytanego świata w trybie decyzji użytkownika: przeprowadzenie procesu decyzyjnego od początku do końca, 
+gry i wizualizację pośrednich stanów świata,
+- modyfikację wczytanego świata w trybie projektowym: arbitralne dodawanie, usuwanie i modyfikowanie węzłów,
 - sprawdzenie poprawności plików `.json` zawierających światy i produkcje (lokalnie lub poprzez API),
 - wygenerowanie poglądowych schematów produkcji (lokalnie lub poprzez API),
-- wygenerowanie schematu dziedziczenia produkcji,
-- modyfikację wczytanego świata w trybie projektowym: arbitralne dodawanie, usuwanie i modyfikowanie węzłów,
-- modyfikację wczytanego świata w trybie decyzji użytkownika: przeprowadzenie procesu decyzyjnego od początku do końca, 
-gry i wizualizację pośrednich stanów świata.
+- wygenerowanie schematu dziedziczenia produkcji.
+
+## Przykładowe uruchomienia
+- Przejście misji DragonStory
+  - uruchom skrypt `production_processor/application`. Przejdź misję zgodnie z którąś ścieżką ze schematu `examples/DragonStory/quest_desing_diagram.png` lub zaproponuj własną ścieżkę. Nagranie uruchomienia: `ŚCIEŻKA DO FILMU`
+- Wizualizacja drzewa hierarchii produkcji
+  - uruchom skrypt `production_hierarchy/visualise_production_hierarchy`. Plik wynikowy znajdziesz w katalogu `visualisation/out_hierarchy_new`. Nagranie uruchomienia: `ŚCIEŻKA DO FILMU`
+- Testowanie przesłaniania produkcji
+  - uruchom skrypt `production_processor/application`. Idź do więzienia lub wypij zatruty alkohol kupiony od pijaka. Nagranie uruchomienia: `ŚCIEŻKA DO FILMU`
+- Przejście misji RumcajsStory
+  - w skrypcie `production_processor/application` w bloku definicji (linie 30-38) zmień domyślne wartości na:
+  `world_name = 'world_RumcajsStory'`, `quest_names = ['quest_RumcajsStory_close']`, `character_name = 'Rumcajs'`
 
 ## Potrzebne dane źródłowe
-W katalogu materiałów projektowych (wskazanym w pliku `config.py`);
-- podkatalog: `productions`: co najmniej jeden plik `.json` misji, mogą być pogrupowane w podkatalogi. Zazwyczaj dla misji mamy dwa pliki, jeden zawierający produkcje generyczne a drugi szczegółowe;
-- podkatalog: `schema`, plik ze schematem poprawnej struktury JSON (bieżący to: `schema_updated_najnowszadata.json`);
-- podkatalog: `productions/worlds`: co najmniej jeden plik `.json` świata.
+W katalogu materiałów projektowych (wskazanym w pliku `config.py`, domyślnie katalog `examples`);
+- co najmniej jeden plik `.json` misji, mogą być pogrupowane w podkatalogi. Zazwyczaj dla misji mamy dwa pliki, jeden zawierający produkcje generyczne a drugi szczegółowe;
+
+[comment]: <> (- podkatalog: `schema`, plik ze schematem poprawnej struktury JSON &#40;bieżący to: `schema_updated_najnowszadata.json`&#41;;)
+- co najmniej jeden plik `.json` świata.
 
 W repozytorium skryptów:
 - podkatalog: `json_validation/allowed_names`: pliki `.json` z dozwolonymi nazwami węzłów z czterech warstw.
