@@ -989,3 +989,10 @@ def paths_convert_to_text(paths:list):
         if nr > len(paths)-1:
             paths_text += ", "
     return paths_text
+
+def get_project_root() -> Path:
+    """
+    Return main directory of project
+    :return: path of main directory
+    """
+    return Path((__file__)).resolve().parents[1]
