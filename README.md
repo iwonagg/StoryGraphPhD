@@ -22,7 +22,7 @@ gry i wizualizację pośrednich stanów świata,
 - Wizualizacja drzewa hierarchii produkcji
   - uruchom skrypt `production_hierarchy/visualise_production_hierarchy`. Plik wynikowy znajdziesz w katalogu `visualisation/out_hierarchy_new`. Nagranie uruchomienia: `ŚCIEŻKA DO FILMU`
 - Testowanie przesłaniania produkcji
-  - uruchom skrypt `production_processor/application`. Idź do więzienia lub wypij zatruty alkohol kupiony od pijaka. Nagranie uruchomienia: `ŚCIEŻKA DO FILMU`
+  - uruchom skrypt `production_processor/application`. Idź do więzienia lub wypij zatruty alkohol kupiony od pijaka. Nagranie uruchomienia: `ŚCIEŻKA DO FILMU`. Należy pamiętać, że w trybie testerskim użytkownik jest informowany o przesłonięciu produkcji, ale nadal może ją wykonać.
 - Przejście misji RumcajsStory
   - w skrypcie `production_processor/application` w bloku definicji (linie 30-38) zmień domyślne wartości na:
   `world_name = 'world_RumcajsStory'`, `quest_names = ['quest_RumcajsStory_close']`, `character_name = 'Rumcajs'`
@@ -89,7 +89,7 @@ W repozytorium skryptów:
     - otwórz `Terminal`
       - wykonaj `pip install -r requirements.txt`
 - stwórz nowy plik kopiując plik `config/config.dist.py` do `config/config.py`
-- w pliku `config/config.py`, wskaz ścieżkę, w której znajduje się katalog `productions` i `schema`
+- jeżeli chcesz korzystać z innego źródła danych, w pliku `config/config.py` zmień ścieżkę na wskazującą katalog z plikami źródłowymi
 - uruchom plik:
   - `production_processor/application.py` – aby przeprowadzić symulację procesu decyzyjnego gracza
   - `manual_word_modification/word_modification.py` – aby tworzyć lub modyfikować świat
