@@ -78,7 +78,7 @@ W repozytorium skryptów:
   - przy instalacji na windows wybierz "Add Graphviz to system PATH for all users" lub "Add Graphviz to system PATH for current users"
 
 ### Instalacja i przygotowanie projektu
-- pobierz projekt (`Git / Clone...`) z repozytorium GitHub (`https://github.com/iwonagg/StoryGraph.git`)
+- pobierz projekt (`Git / Clone...`) z repozytorium GitHub (`https://github.com/iwonagg/StoryGraphPhD.git`)
 - stwórz wirtualne środowisko (venv)
   - szczegółowa instrukcja dla PyCharm:
     - otwórz `File / Settings / Project: StoryGraph / Python interpreter`
@@ -97,7 +97,7 @@ W repozytorium skryptów:
 
 ### Uwagi MAC
 
-Przy instalacji pakiety `pygraphviz` może pojawić się błąd budowania biblioteki `graphviz`, który można rozwiązać poprzez:
+Przy instalacji pakietu `pygraphviz` może pojawić się błąd budowania biblioteki `graphviz`, który można rozwiązać poprzez:
 
 ```bash
 PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.8.12
