@@ -1,11 +1,13 @@
-# StoryGraph
+# Implementacja referencyjna systemu StoryGraph
 ![plot](./images/ikonaSG.png)
-Projekt pozwalający zapisać strukturę narracyjną gry fabularnej w postaci modelu grafowego. Fabuła gry przedstawiona 
+<span style="color:red">**toryGraph**</span> to projekt modelu formalnego pozwalający zapisać strukturę narracyjną gry fabularnej w postaci modelu grafowego. Fabuła gry przedstawiona 
 jest w postaci grafu stanu świata i produkcji pozwalających go modyfikować. Produkcje dotyczące działań ogólnych 
 dowolnych postaci (chodzenie, podnoszenie przedmiotów, pozyskiwanie wiedzy itp.) zebrane są w zbiorze produkcji 
 generycznych. Produkcje bardziej szczegółowe dla wygody projektantów podzielone są na misje.
 Model grafowy opiera się na grafie warstwowym z czterema warstwami: lokacji („Locations”), postaci („Characters”), 
 przedmiotów („Items”) oraz informacji fabularnych („Narration”).
+
+Implementacja referencyjna demonstruje możliwości modelu i pozwala obejrzeć rozwiązania implementacyjne zalecane przez twórców systemy. Może też służyć jako silnik narracyjny dla zewnętrznych projektów dzięki udostępnionemu API.
 
 ## Co da się zrobić w tym projekcie?
 Zbiór skryptów w języku python dostępny w tym repozytorium pozwala na:
@@ -18,7 +20,7 @@ gry i wizualizację pośrednich stanów świata,
 
 ## Przykładowe uruchomienia
 - Przejście misji DragonStory
-  - uruchom skrypt `production_processor/application`. Przejdź misję zgodnie z którąś ścieżką ze schematu `examples/DragonStory/quest_desing_diagram.png` lub zaproponuj własną ścieżkę. Nagranie uruchomienia: `ŚCIEŻKA DO FILMU`
+  - uruchom skrypt `production_processor/application`. Przejdź misję zgodnie z którąś ścieżką ze schematu [examples/DragonStory/quest_desing_diagram.png](https://github.com/iwonagg/StoryGraphPhD/blob/master/examples/DragonStory/quest_desing_diagram_resize.png) lub zaproponuj własną ścieżkę. Nagranie uruchomienia: `ŚCIEŻKA DO FILMU`
 - Wizualizacja drzewa hierarchii produkcji
   - uruchom skrypt `production_hierarchy/visualise_production_hierarchy`. Plik wynikowy znajdziesz w katalogu `visualisation/out_hierarchy_new`. Nagranie uruchomienia: `ŚCIEŻKA DO FILMU`
 - Testowanie przesłaniania produkcji
@@ -26,6 +28,7 @@ gry i wizualizację pośrednich stanów świata,
 - Przejście misji RumcajsStory
   - w skrypcie `production_processor/application` w bloku definicji (linie 30-38) zmień domyślne wartości na:
   `world_name = 'world_RumcajsStory'`, `quest_names = ['quest_RumcajsStory_close']`, `character_name = 'Rumcajs'`
+  - uruchom skrypt `production_processor/application`. Przejdź misję zgodnie z którąś ścieżką ze schematu [examples/RumcajsStory/Rumcajs_szczegółowy.png](https://github.com/iwonagg/StoryGraphPhD/blob/master/examples/RumcajsStory/Rumcajs_szczegółowy_resize.png)
 
 ## Potrzebne dane źródłowe
 W katalogu materiałów projektowych (wskazanym w pliku `config.py`, domyślnie katalog `examples`);
