@@ -28,7 +28,7 @@ gry i wizualizację pośrednich stanów świata,
 - Przejście misji RumcajsStory
   - w skrypcie `production_processor/application` w bloku definicji (linie 30-38) zmień domyślne wartości na:
   `world_name = 'world_RumcajsStory'`, `quest_names = ['quest_RumcajsStory_close']`, `character_name = 'Rumcajs'`
-  - uruchom skrypt `production_processor/application`. Przejdź misję zgodnie z którąś ścieżką ze schematu [examples/RumcajsStory/Rumcajs_szczegółowy.png](https://github.com/iwonagg/StoryGraphPhD/blob/master/examples/RumcajsStory/Rumcajs_szczegółowy_resize.png)
+  - uruchom skrypt `production_processor/application`. Przejdź misję zgodnie z którąś ścieżką ze schematu [examples/RumcajsStory/Rumcajs_szczegółowy.png](https://github.com/iwonagg/StoryGraphPhD/blob/master/examples/RumcajsStory/diagramy%20projektowe/Rumcajs_%20szczegółowy_resize.png)
 
 ## Potrzebne dane źródłowe
 W katalogu materiałów projektowych (wskazanym w pliku `config.py`, domyślnie katalog `examples`);
