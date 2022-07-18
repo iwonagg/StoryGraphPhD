@@ -106,9 +106,9 @@ print(f"""
 ║ Wizualizacje kolejnych możliwości wyboru i wykonanych produkcji znajdują się w katalogu: 
 ║ {result_file_path}
 ║
-║ UWAGA1: Nie działa na razie blokowanie produkcji generycznych przez produkcje szczegółowe. 
-║ Trzeba uczciwie wybierać najbardziej szczegółową (drzewo hierarchii dostępne w katalogu)
-║ UWAGA2: Działa bardzo wolno, bo generuje mnóstwo obrazków pomocniczych.
+║ UWAGA1: Aplikacja działa w trybie testera, czyli można wykonywać produkcje przesłonięte 
+║ parametrem Override mimo ich oznaczenia: BLOKADA1, BLOKADA2.
+║ UWAGA2: Działa dość wolno, bo generuje mnóstwo obrazków pomocniczych.
 ╚═══════════════════════════════════════════════════════════════════════════════════════════
 """)
 

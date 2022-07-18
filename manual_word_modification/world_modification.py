@@ -28,7 +28,7 @@ jsons_OK, jsons_schema_OK, errors, warnings = get_jsons_storygraph_validated(jso
 # Tutaj ustalamy parametry wejściowe #
 ######################################
 # Definiowanie świata
-world_name = 'world_DragonStory'  # 'world_RumcajsStory'
+world_name = 'world_RumcajsStory'  # 'world_DragonStory'
 world_source = jsons_schema_OK[get_quest_nr(world_name, jsons_schema_OK)]
 world = world_source['json'][0]["LSide"]["Locations"]
 if not destinations_change_to_nodes(world, world=True):
