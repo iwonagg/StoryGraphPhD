@@ -20,7 +20,7 @@ gry i wizualizację pośrednich stanów świata,
 
 ## Przykładowe uruchomienia
 - Przejście misji DragonStory
-  - uruchom skrypt `production_processor/application`. Przejdź misję zgodnie z którąś ścieżką ze schematu [examples/DragonStory/diagram_misji/quest_desing_diagram.png](https://github.com/iwonagg/StoryGraphPhD/blob/master/examples/DragonStory/diagram_misji/quest_desing_diagram_resize.png) lub zaproponuj własną ścieżkę. Nagranie uruchomienia: `ŚCIEŻKA DO FILMU`
+  - uruchom skrypt `production_processor/application`. Przejdź misję zgodnie z którąś ścieżką ze schematu [examples/DragonStory/diagram_misji/quest_desing_diagram.png](https://github.com/iwonagg/StoryGraphPhD/blob/master/examples/DragonStory/diagram_misji/quest_desing_diagram_resize.png) lub zaproponuj własną ścieżkę. [Nagranie uruchomienia](https://ujchmura-my.sharepoint.com/:v:/g/personal/iwona_grabska_uj_edu_pl/EdI_93ZtQStGs7uTn9qqSOoB6lz3XZmIfjK-b_3ux1I5aw?e=xBIgaF)
 - Wizualizacja drzewa hierarchii produkcji
   - uruchom skrypt `production_hierarchy/visualise_production_hierarchy`. Plik wynikowy znajdziesz w katalogu `visualisation/out_hierarchy_new`. Nagranie uruchomienia: `ŚCIEŻKA DO FILMU`
 - Testowanie przesłaniania produkcji

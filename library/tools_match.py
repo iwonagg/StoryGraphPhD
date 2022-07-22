@@ -931,17 +931,22 @@ def character_turn(gameplay, world, world_source, main_location, productions_to_
                                         if e1[1].get("Name") == e2[1].get("Name"):
                                             m += 1
                                     if e1[1].get("Attributes") and e2[1].get("Attributes"):
-                                        if e1[1]["Attributes"].items() in e2[1]["Attributes"].items():
+                                        if all(x in e2[1]["Attributes"].items() for x in e1[1]["Attributes"].items()):
                                             m += 1
-                            if m == len(b):
+                            if m >= len(b):
                                 v.append("BLOKADA1 ")
                                 vb += 1
                     if vb == len(todos[nr - offset]['Matches']):
                         cover = 'BLOKADA1 '
                     elif vb:
                         cover = 'CZĘŚCIOWA BLOKADA1 '
-            elif todos[nr - offset].get('TitleGeneric') and todos[todos_names.index(todos[nr - offset]['TitleGeneric'])]['Matches'][0][-1] == "BLOKADA1 " and todos[nr - offset].get('Override') == 2:
-                cover = 'BLOKADA1 '
+            elif todos[nr - offset].get('TitleGeneric') and  todos[nr - offset].get('Override') == 2:
+                try:
+                    if todos[todos_names.index(todos[nr - offset]['TitleGeneric'])]['Matches'][0][-1] == "BLOKADA1 ":
+                        cover = 'BLOKADA1 '
+                except ValueError:
+                    pass
+
 
 
             print(f"{all_prod_number_text}{nr - offset:02d}. {cover}{warning_text}{productions_to_match[nr]['Title'].split(' / ')[0]} – ", end="")

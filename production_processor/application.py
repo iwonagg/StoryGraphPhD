@@ -19,8 +19,6 @@ logging.basicConfig(level=logging.ERROR, format='%(levelname)s: %(message)s', st
 
 
 # wgrywanie jsonów
-# json_schema_path = f'../json_validation/schema_updated_20220213.json'
-# dict_schema_path = f'../json_validation/schema_sheaf_updated_20220213.json'
 dir_name = ''  #
 json_path = f'{path_root}/{dir_name}'
 jsons_OK, jsons_schema_OK, errors, warnings = get_jsons_storygraph_validated(json_path)
@@ -88,7 +86,6 @@ for prods in prod_world_turn_jsons:
 
 
 # definiowanie struktur pomocniczych
-# prod_tree, prod_dict = get_production_tree2("test", productions_chars_turn_to_match + productions_world_turn_to_match)
 decision_nr = 0
 date_folder = str(datetime.now().strftime("%Y%m%d%H%M%S"))
 script_root_path = os.getcwd().rsplit(os.sep, 1)[0]
