@@ -1781,7 +1781,7 @@
     "Title": "Nutrition with poison / Spożycie trucizny",
     "TitleGeneric": "Nutrition / Odżywianie",
     "Description": "«Bohater_A» zatruwa się poprzez spożycie przedmiotu będącego trucizną («Any_item»). Ojjj…",
-    "Override": 0,
+    "Override": 1,
     "LSide": {
       "Locations": [
         {
