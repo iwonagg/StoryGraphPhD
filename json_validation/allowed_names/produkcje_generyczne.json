@@ -1781,7 +1781,7 @@
     "Title": "Nutrition with poison / Spożycie trucizny",
     "TitleGeneric": "Nutrition / Odżywianie",
     "Description": "«Bohater_A» zatruwa się poprzez spożycie przedmiotu będącego trucizną («Any_item»). Ojjj…",
-    "Override": 1,
+    "Override": 2,
     "LSide": {
       "Locations": [
         {
@@ -1834,7 +1834,7 @@
     "Title": "Nutrition with rotten item / Zatrucie pokarmowe po zjedzeniu przedmiotu",
     "TitleGeneric": "Nutrition / Odżywianie",
     "Description": "«Someone» źle się czuje po zjedzeniu zepsutej żywności («RottenItem»). Jest chory, osłabiony i rozkojarzony.",
-    "Override": 0,
+    "Override": 2,
     "LSide": {
       "Locations": [
         {
