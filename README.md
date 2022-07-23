@@ -28,7 +28,7 @@ gry i wizualizację pośrednich stanów świata,
 - Testowanie przesłaniania produkcji
   - uruchom skrypt `production_processor/application`. Idź do więzienia lub wypij zatruty alkohol kupiony od pijaka. Należy pamiętać, że w trybie testerskim użytkownik jest informowany o przesłonięciu produkcji, ale nadal może ją wykonać.
     
-    **[Nagranie uruchomienia testowania przesłonięć](https://ujchmura-my.sharepoint.com/:v:/g/personal/iwona_grabska_uj_edu_pl/EUumkkDChO5NhiycIe1FcXwB9GVwWizlUqxyVmRDs7ITyg?e=fwZD9a)**
+    &#127909; **[Nagranie uruchomienia testowania przesłonięć](https://ujchmura-my.sharepoint.com/:v:/g/personal/iwona_grabska_uj_edu_pl/EUumkkDChO5NhiycIe1FcXwB9GVwWizlUqxyVmRDs7ITyg?e=fwZD9a)**
 - Przejście misji RumcajsStory
   - w skrypcie `production_processor/application` w bloku definicji (linie 30-38) zmień domyślne wartości na:
   `world_name = 'world_RumcajsStory'`, `quest_names = ['quest_RumcajsStory_close']`, `character_name = 'Rumcajs'`
