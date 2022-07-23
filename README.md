@@ -22,13 +22,13 @@ gry i wizualizację pośrednich stanów świata,
 - Przejście misji DragonStory
   - uruchom skrypt `production_processor/application`. Przejdź misję zgodnie z którąś ścieżką ze schematu [examples/DragonStory/diagram_misji/quest_desing_diagram.png](https://github.com/iwonagg/StoryGraphPhD/blob/master/examples/DragonStory/diagram_misji/quest_desing_diagram_resize.png) lub zaproponuj własną ścieżkę. 
    
-     **[Nagranie uruchomienia](https://ujchmura-my.sharepoint.com/:v:/g/personal/iwona_grabska_uj_edu_pl/EdI_93ZtQStGs7uTn9qqSOoB6lz3XZmIfjK-b_3ux1I5aw?e=cFal8r)**
+     **[Nagranie uruchomienia przejścia misji](https://ujchmura-my.sharepoint.com/:v:/g/personal/iwona_grabska_uj_edu_pl/EdI_93ZtQStGs7uTn9qqSOoB6lz3XZmIfjK-b_3ux1I5aw?e=cFal8r)**
 - Wizualizacja drzewa hierarchii produkcji
   - uruchom skrypt `production_hierarchy/visualise_production_hierarchy`. Plik wynikowy znajdziesz w katalogu `visualisation/out_hierarchy_new`.
 - Testowanie przesłaniania produkcji
   - uruchom skrypt `production_processor/application`. Idź do więzienia lub wypij zatruty alkohol kupiony od pijaka. Należy pamiętać, że w trybie testerskim użytkownik jest informowany o przesłonięciu produkcji, ale nadal może ją wykonać.
     
-    **[Nagranie uruchomienia](https://ujchmura-my.sharepoint.com/:v:/g/personal/iwona_grabska_uj_edu_pl/EUumkkDChO5NhiycIe1FcXwB9GVwWizlUqxyVmRDs7ITyg?e=fwZD9a)**
+    **[Nagranie uruchomienia testowania przesłonięć](https://ujchmura-my.sharepoint.com/:v:/g/personal/iwona_grabska_uj_edu_pl/EUumkkDChO5NhiycIe1FcXwB9GVwWizlUqxyVmRDs7ITyg?e=fwZD9a)**
 - Przejście misji RumcajsStory
   - w skrypcie `production_processor/application` w bloku definicji (linie 30-38) zmień domyślne wartości na:
   `world_name = 'world_RumcajsStory'`, `quest_names = ['quest_RumcajsStory_close']`, `character_name = 'Rumcajs'`
