@@ -34,6 +34,12 @@ gry i wizualizację pośrednich stanów świata,
   `world_name = 'world_RumcajsStory'`, `quest_names = ['quest_RumcajsStory_close']`, `character_name = 'Rumcajs'`
   - uruchom skrypt `production_processor/application`. Przejdź misję zgodnie z którąś ścieżką ze schematu [examples/RumcajsStory/diagram_misji/Rumcajs_szczegółowy.png](https://github.com/iwonagg/StoryGraphPhD/blob/master/examples/RumcajsStory/diagram_misji/Rumcajs_szczegółowy_resize.png)
 
+## Specyfikacja
+ - [Specyfikacja StoryGraph 01.2](Specyfikacja_StoryGraph_01.2_official.pdf)
+ - [Dodatek A – Definicje modelu formalnego](Dodatek_A_do_specyfikacji_Definicje_modelu_grafoweg.pdf)
+ - [Dodatek B – JSON schema](./json_validation/json_schema/schemas/schema_updated_20220213.json)
+
+
 ## Potrzebne dane źródłowe
 W katalogu materiałów projektowych (wskazanym w pliku `config.py`, domyślnie katalog `examples`);
 - co najmniej jeden plik `.json` misji, mogą być pogrupowane w podkatalogi. Zazwyczaj dla misji mamy dwa pliki, jeden zawierający produkcje generyczne a drugi szczegółowe;
