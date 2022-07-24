@@ -36,7 +36,7 @@ gry i wizualizację pośrednich stanów świata,
 
 ## Specyfikacja
  - [Specyfikacja StoryGraph 01.2](Specyfikacja_StoryGraph_01.2_official.pdf)
- - [Dodatek A – Definicje modelu formalnego](Dodatek_A_do_specyfikacji_Definicje_modelu_grafoweg.pdf)
+ - [Dodatek A – Definicje modelu formalnego](Dodatek_A_do_specyfikacji_Definicje_modelu_grafowego.pdf)
  - [Dodatek B – JSON schema](./json_validation/json_schema/schemas/schema_updated_20220213.json)
 
 
