@@ -35,7 +35,7 @@ gry i wizualizację pośrednich stanów świata,
   - uruchom skrypt `production_processor/application`. Przejdź misję zgodnie z którąś ścieżką ze schematu [examples/RumcajsStory/diagram_misji/Rumcajs_szczegółowy.png](https://github.com/iwonagg/StoryGraphPhD/blob/master/examples/RumcajsStory/diagram_misji/Rumcajs_szczegółowy_resize.png)
 
 ## Specyfikacja
- - [Specyfikacja StoryGraph 01.2](Specyfikacja_StoryGraph_01.2_official.pdf)
+ - [Specyfikacja StoryGraph 1.2](Specyfikacja_StoryGraph_01.2_official.pdf)
  - [Dodatek A – Definicje modelu formalnego](Dodatek_A_do_specyfikacji_Definicje_modelu_grafowego.pdf)
  - [Dodatek B – JSON schema](./json_validation/json_schema/schemas/schema_updated_20220213.json)
 
@@ -106,7 +106,7 @@ W repozytorium skryptów:
 - uruchom plik:
   - `production_processor/application.py` – aby przeprowadzić symulację procesu decyzyjnego gracza
   - `manual_word_modification/word_modification.py` – aby tworzyć lub modyfikować świat
-- obrazy generowane przez aplikację znajdziesz w katalogu `production_processor/gameplays`
+- obrazy generowane przez aplikację znajdziesz w katalogu `gameplays`
 
 ### Uwagi MAC
 
@@ -130,16 +130,15 @@ katalog ze światami w katalogu źródłowym albo podkatalogi katalogu z repozyt
 - `manual_world_modifications`
   - `world_modifications`: do ręcznego modyfikowania wskazanego pliku świata przez projektanta
 - `production_hierarchy` (pomocnicze)
-  -  `visualise_production_hierarchy`: wyświetlanie hierarchii produkcji
+  -  `visualise_production_hierarchy`: wizualizacja hierarchii produkcji (domyślnie w pliku w katalogu `visualisation/out_production_hierarchy_tree`)
 - `production_match` (pomocnicze)
   - `find_productions_to_perform`: znajduje i wypisuje listę produkcji pasującą do wskazanego na początku skryptu świata. 
-Szczegóły dopasowań wizualizuje w katalogu `production_matches/out`
+Szczegóły dopasowań wizualizuje w katalogu `production_match/out`
 - `production_processor`
   - `application`: Przeprowadza użytkownika przez proces decyzyjny gry zaczynając od stanu startowego wskazanego na 
 początku skryptu świata. Znajduje dopasowania produkcji z plików misji wskazanych na początku skryptu, wykonuje wybraną 
 przez użytkownika produkcję w wybranym wariancie dopasowania i od nowa znajduje dopasowania produkcji do zmienionego 
 świata dopóki użytkownik nie przerwie cyklu. Zapisuje wizualizacje kolejnych stanów świata i warianty dopasowań 
-w katalogu `production_match/out`. Pozwala na zapisanie tamże aktualnego stanu świata w pliku `.json`. W wersji roboczej 
-uzupełnia przed rozpoczęciem cyklu świat o domyślne wartości obowiązkowych atrybutów. 
+w podkatalogu katalogu `gameplays`. Pozwala na zapisanie tamże aktualnego stanu świata w pliku `.json`.
 
 
